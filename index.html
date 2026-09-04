@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#090911">
-<title>Kitchen of the Gods — Afterlife Simulator</title>
+<title>Psyche Kitchen — Afterlife Thriller</title>
 <style>
 :root {
   --gold:#f2d27a; --cyan:#8ee8ff; --ember:#ff7a3d; --ink:#080910;
@@ -82,16 +82,63 @@ button{font:inherit}
   .ingredients{grid-template-columns:repeat(3,1fr)}
   .ing{min-height:96px;padding:9px}
 }
+
+/* PSYCHE THRILLER LAYER */
+.psyche-panel{padding:14px;margin:12px 0;background:linear-gradient(145deg,rgba(20,17,34,.95),rgba(9,10,17,.96));border:1px solid rgba(166,132,255,.28);border-radius:22px}
+.psyche-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px}
+.psyche-head h3{margin:0;font-size:15px}.psyche-head small{color:#aaa4bb}
+.traits{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.trait{padding:9px;border:1px solid rgba(255,255,255,.07);border-radius:13px;background:#10111b;font-size:10px}
+.trait b{display:flex;justify-content:space-between;margin-bottom:6px;font-size:10px}
+.traitbar{height:5px;border-radius:10px;background:#252636;overflow:hidden}.traitbar i{display:block;height:100%;background:linear-gradient(90deg,#8ee8ff,#f2d27a);transition:.3s}
+.zodiac-strip{height:9px;border-radius:999px;margin:11px 0;background:linear-gradient(90deg,#ff5b5b,#ff9f43,#ffe66d,#56d879,#54c7ec,#6574ff,#9b6bff,#d968d7,#ff5b8d);box-shadow:0 0 18px rgba(151,112,255,.22)}
+.shadowmsg{font-size:12px;line-height:1.45;color:#d4cedc;padding:10px 11px;border-left:2px solid #a684ff;background:rgba(166,132,255,.06);border-radius:0 12px 12px 0}
+.character-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.character{padding:10px 7px;border-radius:15px;text-align:center;background:#0e0f18;border:1px solid rgba(255,255,255,.07);min-height:92px}
+.character .face{font-size:25px}.character b{display:block;font-size:10px;margin-top:5px}.character small{font-size:9px;color:#9691a4}
+.character.locked{filter:grayscale(1);opacity:.35}.character.unlocked{border-color:#f2d27a;box-shadow:0 0 16px rgba(242,210,122,.12)}
+body.threat{animation:threatPulse 1.8s ease-in-out infinite}
+@keyframes threatPulse{50%{box-shadow:inset 0 0 70px rgba(117,35,74,.14)}}
+.memory-flash{position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;padding:25px;background:rgba(5,4,10,.91);opacity:0;pointer-events:none;transition:.25s}
+.memory-flash.show{opacity:1;pointer-events:auto}.memory-card{max-width:520px;padding:24px;text-align:center;border:1px solid rgba(242,210,122,.28);border-radius:24px;background:#10111b}
+.memory-card h2{margin:0 0 10px}.memory-card p{line-height:1.55;color:#d2ccd8}
+
+/* MAIN AREAS / ASTRAL SYSTEM */
+.area-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:10px 0 12px}
+.area-nav button{padding:10px 4px;border-radius:13px;border:1px solid rgba(242,210,122,.18);background:rgba(12,13,22,.94);color:#ddd7e6;font-size:9px;font-weight:900;letter-spacing:.03em}
+.area-nav button.active{border-color:#f2d27a;color:#fff1b5;box-shadow:0 0 18px rgba(242,210,122,.12)}
+.area-screen{display:none}.area-screen.active{display:block}
+.astral-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.astral-card{padding:11px;border:1px solid rgba(255,255,255,.07);border-radius:15px;background:#0e0f18}
+.astral-card b{font-size:11px}.astral-card p{font-size:10px;color:#aaa5b4;line-height:1.4;margin:5px 0 0}
+.wave{height:38px;position:relative;overflow:hidden;border-radius:10px;background:#0a0b12;margin-top:6px}
+.wave i{position:absolute;left:0;right:0;top:50%;height:2px;background:linear-gradient(90deg,#ff5b5b,#ffe66d,#56d879,#54c7ec,#9b6bff,#ff5b8d);transform-origin:center;box-shadow:0 0 9px rgba(142,232,255,.25)}
+.psychiatric-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:10px}
+.psychstat{padding:8px;border-radius:12px;background:#0c0d15;border:1px solid rgba(255,255,255,.06);font-size:9px}
+.psychstat b{display:flex;justify-content:space-between;margin-bottom:5px}
+.psychstat em{display:block;height:4px;border-radius:5px;background:linear-gradient(90deg,#7666ff,#f2d27a)}
+.below{padding:18px;text-align:center;border:1px solid rgba(143,72,116,.35);background:radial-gradient(circle at 50% 0,rgba(101,42,91,.20),#0a0b12 65%);border-radius:22px}
+.below h2{letter-spacing:.14em}.below p{color:#bbb4c4;line-height:1.55;font-size:12px}
+.lockmark{font-size:34px;opacity:.65}
+
+/* PROCEDURAL RECIPE ENGINE */
+.formula-box{padding:13px;margin-top:10px;border-radius:16px;background:#0b0c14;border:1px solid rgba(142,232,255,.13)}
+.formula-box h4{margin:0 0 8px;font-size:11px;letter-spacing:.08em;color:#8ee8ff}
+.formula-row{display:grid;grid-template-columns:1fr auto;gap:8px;font-size:10px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.formula-row:last-child{border:0}.formula-row span:last-child{color:#f2d27a;font-weight:800}
+.discovery{padding:13px;margin:10px 0;border-radius:17px;background:linear-gradient(145deg,rgba(45,31,57,.8),rgba(11,12,20,.95));border:1px solid rgba(242,210,122,.18)}
+.discovery .dishicon{font-size:36px}.discovery h3{margin:4px 0}.discovery p{font-size:11px;color:#bbb5c5;line-height:1.45}
 </style>
 </head>
 <body>
+<div id="memoryFlash" class="memory-flash"><div class="memory-card"><div class="eyebrow">Recovered Memory</div><h2 id="memoryTitle">THE SHADOW</h2><p id="memoryText"></p><button class="close" id="memoryClose">RETURN TO RANGE</button></div></div>
 <div id="toast" class="toast">The kitchen is listening.</div>
 
 <div id="intro" class="overlay">
   <div class="introbox">
     <img class="intro-seal" src="data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiPgo8Y2lyY2xlIGN4PSIyNTAiIGN5PSIyNTAiIHI9IjIyMCIgZmlsbD0iIzE1MTUyMiIgc3Ryb2tlPSIjZTdjOTc5IiBzdHJva2Utd2lkdGg9IjE0Ii8+CjxjaXJjbGUgY3g9IjI1MCIgY3k9IjI1MCIgcj0iMTY2IiBmaWxsPSJub25lIiBzdHJva2U9IiM4ZWU4ZmYiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWRhc2hhcnJheT0iMTQgMTgiLz4KPHBhdGggZD0iTTI1MCA5MiBMMjg4IDIwMiBMNDA2IDIwMiBMMzEwIDI3MCBMMzQ2IDM4NSBMMjUwIDMxNiBMMTU0IDM4NSBMMTkwIDI3MCBMOTQgMjAyIEwyMTIgMjAyWiIgZmlsbD0iI2QzYjQ1ZiIgb3BhY2l0eT0iLjkyIi8+CjxjaXJjbGUgY3g9IjI1MCIgY3k9IjI1MCIgcj0iNzIiIGZpbGw9IiMyMDE2MmEiIHN0cm9rZT0iI2ZmZjBhOCIgc3Ryb2tlLXdpZHRoPSI1Ii8+Cjwvc3ZnPgo=" alt="">
-    <div class="eyebrow">Afterlife Culinary Division</div>
-    <h1 id="introTitle">KITCHEN<br>OF THE GODS</h1>
+    <div class="eyebrow">Afterlife Personality Division</div>
+    <h1 id="introTitle">PSYCHE<br>KITCHEN</h1>
     <p id="introText">You died with a spoon in your hand. That was apparently enough experience to get hired.</p>
     <button id="introBtn" class="bigstart">CONTINUE ✦</button>
   </div>
@@ -106,7 +153,18 @@ button{font:inherit}
     </div>
   </div>
 
-  <section class="order card">
+  
+<div class="area-nav" id="areaNav">
+ <button data-area="range" class="active">THE RANGE</button>
+ <button data-area="orders">DIVINE ORDERS</button>
+ <button data-area="pantry">PANTRY</button>
+ <button data-area="psyche">PSYCHE LAB</button>
+ <button data-area="astral">ASTRAL CLOCK</button>
+ <button data-area="vault">CHARACTER VAULT</button>
+ <button data-area="experiment">EXPERIMENT</button><button data-area="below">THE BELOW</button>
+</div>
+<div id="area-range" class="area-screen active">
+<section class="order card">
     <div class="eyebrow">Current Recipe Challenge</div>
     <h2 id="orderName">Ambrosial Ember Bread</h2>
     <p id="orderDesc">The Gatekeeper wants warmth, sweetness, and a little smoke. Choose 3 ingredients, wake the range, then serve at the sacred moment.</p>
@@ -139,15 +197,60 @@ button{font:inherit}
     </div>
   </section>
 
-  <div class="section-title"><h3>Ingredient Pantry</h3><span>Pick the 3 that belong</span></div>
+  
+<section class="psyche-panel">
+ <div class="psyche-head"><h3>PSYCHE READOUT</h3><small id="archetype">Archetype: Persona</small></div>
+ <div class="zodiac-strip" id="zodiacStrip"></div>
+ <div class="shadowmsg" id="shadowMsg">The kitchen is profiling the choices you make, not diagnosing you. Every recipe pushes the fictional cook toward a different archetype.</div>
+ <div class="traits" id="traits"></div>
+</section>
+<div class="section-title"><h3>Recovered Characters</h3><span>unlock through cooking</span></div>
+<section class="character-grid" id="characters"></section>
+<div class="section-title"><h3>Ingredient Pantry</h3><span>Pick the 3 that belong</span></div>
   <section id="ingredients" class="ingredients"></section>
 
   <section class="log card" id="log"><b>Oracle:</b> The range is cold. Pick three offerings, then light at least one ember.</section>
 </div>
 
+<div id="area-orders" class="area-screen">
+ <section class="card order"><div class="eyebrow">DIVINE ORDERS</div><h2>Recipe Case Files</h2><p>The kitchen disguises memory tests as familiar food. Each completed recipe leaves a psychological residue.</p><div id="ordersArea"></div></section>
+</div>
+
+<div id="area-pantry" class="area-screen">
+ <section class="card order"><div class="eyebrow">PANTRY</div><h2>Ingredient Archive</h2><p>Every ingredient carries a fictional symbolic association used by the thriller system.</p><div id="pantryArea" class="ingredients"></div></section>
+</div>
+
+<div id="area-psyche" class="area-screen">
+ <section class="psyche-panel"><div class="eyebrow">PSYCHE LAB</div><h2>Behavioral Simulation</h2><p style="font-size:11px;color:#aaa5b4">These are fictional gameplay variables, not psychiatric assessment results.</p><div id="deepPsych" class="psychiatric-grid"></div></section>
+</div>
+
+<div id="area-astral" class="area-screen">
+ <section class="psyche-panel"><div class="eyebrow">ASTRAL CLOCK</div><h2 id="astralTitle">Cycle Forecast</h2><div class="zodiac-strip"></div><div id="astralInfo" class="astral-grid"></div><h3>Biorhythm Chamber</h3><div id="rhythms" class="astral-grid"></div></section>
+</div>
+
+<div id="area-vault" class="area-screen">
+ <section class="psyche-panel"><div class="eyebrow">CHARACTER VAULT</div><h2>Recovered Personalities</h2><p style="font-size:11px;color:#aaa5b4">Characters are rewards assembled from your fictional cooking profile.</p><div class="character-grid" id="vaultCharacters"></div></section>
+</div>
+
+
+<div id="area-experiment" class="area-screen">
+ <section class="psyche-panel">
+  <div class="eyebrow">EXPERIMENTAL KITCHEN</div>
+  <h2>Procedural Recipe Engine</h2>
+  <p style="font-size:11px;color:#aaa5b4">Ignore the order and combine any three pantry items. Heat, burner, ingredient chemistry, timing, zodiac state, and fictional psyche variables are folded into a generated dish.</p>
+  <div id="formulaExplain" class="formula-box"></div>
+  <div id="discoveries"></div>
+ </section>
+</div>
+<div id="area-below" class="area-screen">
+ <section class="below"><div id="belowLock" class="lockmark">⌁</div><div class="eyebrow">THE BELOW</div><h2 id="belowTitle">SEALED</h2><p id="belowText">The hatch beneath the Eternal Range has no handle. Eight recovered personalities appear to form its key.</p><button id="belowBtn" class="ctrl primary">LISTEN AT THE HATCH</button></section>
+</div>
+
+</div>
+
 <div class="bottom">
-  <button id="ordersBtn">RECIPE BOOK</button>
-  <button id="loreBtn">KITCHEN LORE</button>
+  <button id="ordersBtn">CASE FILES</button>
+  <button id="loreBtn">PSYCHE FILE</button>
   <button id="resetBtn">NEW SOUL</button>
 </div>
 
@@ -280,6 +383,85 @@ button{font:inherit}
 
   let recipeIndex = 0;
   let favor = 0;
+  let psyche={openness:48,discipline:46,sociability:40,empathy:52,reactivity:44,shadow:18};
+  let clinical={affect:52,arousal:41,inhibition:55,salience:38,cognitiveLoad:31,rumination:20,vigilance:35,impulse:43,attachment:48,executiveControl:54,emotionalRegulation:50,realityTesting:72,dissociation:12};
+  const signData=[
+    ["Aries","Fire","Cardinal","Mars","identity","scarlet"],
+    ["Taurus","Earth","Fixed","Venus","stability","amber"],
+    ["Gemini","Air","Mutable","Mercury","duality","yellow"],
+    ["Cancer","Water","Cardinal","Moon","memory","silver-blue"],
+    ["Leo","Fire","Fixed","Sun","persona","gold"],
+    ["Virgo","Earth","Mutable","Mercury","precision","green"],
+    ["Libra","Air","Cardinal","Venus","balance","rose"],
+    ["Scorpio","Water","Fixed","Mars/Pluto","shadow","violet"],
+    ["Sagittarius","Fire","Mutable","Jupiter","seeking","indigo"],
+    ["Capricorn","Earth","Cardinal","Saturn","control","stone"],
+    ["Aquarius","Air","Fixed","Saturn/Uranus","distance","cyan"],
+    ["Pisces","Water","Mutable","Jupiter/Neptune","dream","blue-violet"]
+  ];
+  const houses=["Self","Resources","Messages","Roots","Creation","Ritual","Others","Transformation","Meaning","Authority","Community","Unconscious"];
+  const rhythmDefs=[["Physical",23],["Emotional",28],["Intellectual",33],["Intuition",38],["Shadow",41],["Dream",47]];
+  const chemistry={
+    eggs:{protein:8,fat:5,starch:0,sweet:0,water:5,aroma:2},
+    bread:{protein:3,fat:1,starch:9,sweet:1,water:2,aroma:3},
+    butter:{protein:0,fat:10,starch:0,sweet:0,water:1,aroma:5},
+    cheese:{protein:8,fat:8,starch:0,sweet:0,water:3,aroma:7},
+    milk:{protein:4,fat:3,starch:0,sweet:3,water:9,aroma:2},
+    flour:{protein:3,fat:0,starch:10,sweet:0,water:0,aroma:1},
+    tomato:{protein:1,fat:0,starch:1,sweet:3,water:9,aroma:6},
+    pasta:{protein:3,fat:0,starch:10,sweet:0,water:1,aroma:1},
+    garlic:{protein:1,fat:0,starch:1,sweet:0,water:3,aroma:10},
+    potato:{protein:2,fat:0,starch:9,sweet:1,water:6,aroma:2},
+    rice:{protein:2,fat:0,starch:10,sweet:0,water:1,aroma:1},
+    chicken:{protein:10,fat:4,starch:0,sweet:0,water:5,aroma:5},
+    onion:{protein:1,fat:0,starch:2,sweet:4,water:8,aroma:8},
+    apple:{protein:0,fat:0,starch:2,sweet:8,water:8,aroma:6},
+    sugar:{protein:0,fat:0,starch:0,sweet:10,water:0,aroma:1},
+    cinnamon:{protein:0,fat:0,starch:0,sweet:2,water:0,aroma:10},
+    oil:{protein:0,fat:10,starch:0,sweet:0,water:0,aroma:2},
+    herbs:{protein:0,fat:0,starch:0,sweet:0,water:2,aroma:10}
+  };
+  const prefixes=["Whispering","Midnight","Astral","Broken","Golden","Oracle","Shadow","Dreaming","Mirror","Electric","Forgotten","Celestial","Impossible","Quiet","Scarlet","Lunar"];
+  const forms=["Hash","Custard","Skillet","Toast","Cake","Mash","Scramble","Bake","Pilaf","Melt","Pudding","Crisp","Stack","Stew","Fold","Offering"];
+  let discoveries=[];
+
+
+  let unlocked=0;
+  const zodiac=[
+    {s:"Aries",c:"#ff5b5b",m:"impulse"},
+    {s:"Taurus",c:"#e7b55b",m:"stability"},
+    {s:"Gemini",c:"#ffe66d",m:"duality"},
+    {s:"Cancer",c:"#78d7e8",m:"memory"},
+    {s:"Leo",c:"#ff9f43",m:"identity"},
+    {s:"Virgo",c:"#7bd88f",m:"precision"},
+    {s:"Libra",c:"#ef9bd4",m:"balance"},
+    {s:"Scorpio",c:"#8c5b9e",m:"shadow"},
+    {s:"Sagittarius",c:"#7967d8",m:"seeking"},
+    {s:"Capricorn",c:"#7a8c78",m:"control"},
+    {s:"Aquarius",c:"#54c7ec",m:"distance"},
+    {s:"Pisces",c:"#6574ff",m:"dream"}
+  ];
+  const cast=[
+    ["🜂","The Persona","serves what others expect"],
+    ["◐","The Shadow","keeps the rejected recipe"],
+    ["👁","The Witness","remembers every failed dish"],
+    ["♜","The Architect","rebuilds rules from patterns"],
+    ["☾","The Dreamer","changes recipes in memory"],
+    ["♢","The Double","chooses what you would not"],
+    ["⌛","The Keeper","knows why the oven was waiting"],
+    ["✦","The Self","locked behind integration"]
+  ];
+  const memories=[
+    ["THE PERSONA","The first cook wore your face. It smiled whenever the customer approved, even when you did not."],
+    ["THE SHADOW","Something beneath the range has been saving every ingredient you rejected."],
+    ["THE WITNESS","The kitchen does not punish mistakes. It archives them."],
+    ["THE ARCHITECT","You notice the recipes are beginning to resemble decisions you made before arriving here."],
+    ["THE DREAMER","Tonight the zodiac colors appear in the food. No one else admits seeing them."],
+    ["THE DOUBLE","A second order ticket prints in your handwriting: DO NOT SERVE THE NEXT DISH."],
+    ["THE KEEPER","The oven was already warm when you arrived because another version of you had just left."],
+    ["THE SELF","The final character is not a god. It is the cook with every mask removed."]
+  ];
+
   let shift = 1;
   let temp = 260;
   let selected = [];
@@ -310,6 +492,138 @@ button{font:inherit}
   }
 
   function currentRecipe(){ return recipes[recipeIndex]; }
+
+  
+  
+  function clamp(v){return Math.max(0,Math.min(100,v))}
+  
+  function hashMix(parts){
+    let h=2166136261;
+    for(const ch of parts.join("|")){h^=ch.charCodeAt(0);h=Math.imul(h,16777619)}
+    return Math.abs(h>>>0);
+  }
+  function analyzeMix(chosen){
+    const totals={protein:0,fat:0,starch:0,sweet:0,water:0,aroma:0};
+    chosen.forEach(t=>Object.keys(totals).forEach(k=>totals[k]+=(chemistry[t]?.[k]||0)));
+    return totals;
+  }
+  function proceduralDish(chosen,activeBurner,timing){
+    const mix=analyzeMix(chosen), seed=hashMix([...chosen].sort().concat([temp,activeBurner,Math.round(timing)]));
+    const z=signData[(recipeIndex+shift+unlocked)%12];
+    const name=`${prefixes[seed%prefixes.length]} ${forms[Math.floor(seed/17)%forms.length]}`;
+    let form="mystery";
+    if(mix.starch>=15 && mix.sweet>=8) form="sweet bake";
+    else if(mix.protein>=14 && mix.fat>=8) form="rich skillet";
+    else if(mix.water>=14 && mix.aroma>=10) form="aromatic stew";
+    else if(mix.starch>=15 && mix.fat>=8) form="crisp";
+    else if(mix.sweet>=10 && mix.water>=8) form="fruit pudding";
+    else if(mix.protein>=10) form="savory scramble";
+    else if(mix.starch>=10) form="pan-fried starch";
+    const thermal=Math.round((temp/500)*35 + (timing/100)*35 + (activeBurner+1)*4);
+    const cohesion=Math.round(clamp((mix.starch*2+mix.protein*1.6+mix.fat-mix.water*.6)+thermal));
+    const flavor=Math.round(clamp(mix.aroma*2+mix.sweet*1.3+mix.fat*.8));
+    const stability=Math.round(clamp(100-Math.abs(55-cohesion)+(clinical.executiveControl-50)*.15));
+    const oddity=Math.round(clamp(psyche.shadow*.35+Math.abs(rhythmValue(41))*0.25+(seed%31)));
+    const quality=Math.round(clamp((cohesion+flavor+stability)/3-oddity*.12));
+    const icon=quality>75?"✨":oddity>65?"🜏":mix.sweet>10?"🍮":mix.protein>12?"🍳":"🥘";
+    const text=`A ${z[0]}-colored ${form}. Cohesion ${cohesion}, flavor ${flavor}, stability ${stability}, anomaly ${oddity}.`;
+    return {name,form,mix,cohesion,flavor,stability,oddity,quality,icon,text,chosen:[...chosen],temp,activeBurner,timing:Math.round(timing)};
+  }
+  function renderFormulaExplain(){
+    $("#formulaExplain").innerHTML=`<h4>LIVE FORMULA MODEL</h4>
+      <div class="formula-row"><span>Cohesion</span><span>starch × 2 + protein × 1.6 + fat − water × .6 + thermal</span></div>
+      <div class="formula-row"><span>Flavor</span><span>aroma × 2 + sweetness × 1.3 + fat × .8</span></div>
+      <div class="formula-row"><span>Stability</span><span>cohesion balance + executive-control modifier</span></div>
+      <div class="formula-row"><span>Anomaly</span><span>Shadow + biorhythm + procedural seed</span></div>
+      <div class="formula-row"><span>Outcome</span><span>ingredients + burner + heat + timing + astral state</span></div>`;
+  }
+  function renderDiscoveries(){
+    const d=$("#discoveries"); if(!d)return;
+    d.innerHTML=discoveries.length?discoveries.slice(-8).reverse().map(x=>`<div class="discovery"><div class="dishicon">${x.icon}</div><h3>${x.name}</h3><p>${x.text}</p><small>${x.chosen.map(t=>ingredients.find(i=>i.t===t)?.n||t).join(" + ")} · ${x.temp}° · Burner ${x.activeBurner+1}</small></div>`).join(""):`<div class="discovery"><h3>No anomalies cooked yet.</h3><p>On THE RANGE, deliberately choose ingredients that do not match the current order. The oven will generate something instead of simply rejecting them.</p></div>`;
+  }
+
+  function renderAreas(){
+    $("#ordersArea").innerHTML=recipes.map((r,i)=>`<div class="astral-card" style="margin-top:8px"><b>${r.icon} ${r.name}</b><p>${r.tip}</p></div>`).join("");
+    const symbols={eggs:"potential",bread:"security",butter:"comfort",cheese:"reward",milk:"nurture",flour:"possibility",tomato:"affect",pasta:"continuity",garlic:"defense",potato:"grounding",rice:"order",chicken:"drive",onion:"layers",apple:"knowledge",sugar:"reward",cinnamon:"memory",oil:"adaptation",herbs:"intuition"};
+    $("#pantryArea").innerHTML=ingredients.map(x=>`<div class="ing"><span class="icon">${x.i}</span><b>${x.n}</b><small>${symbols[x.t]||"association"}</small></div>`).join("");
+    renderDeepPsych(); renderAstral(); renderVault(); renderFormulaExplain(); renderDiscoveries();
+  }
+  function renderDeepPsych(){
+    const pretty={affect:"Affect",arousal:"Arousal",inhibition:"Inhibition",salience:"Salience",cognitiveLoad:"Cognitive Load",rumination:"Rumination",vigilance:"Vigilance",impulse:"Impulse",attachment:"Attachment",executiveControl:"Executive Control",emotionalRegulation:"Emotional Regulation",realityTesting:"Reality Testing",dissociation:"Dissociation"};
+    $("#deepPsych").innerHTML=Object.entries(clinical).map(([k,v])=>`<div class="psychstat"><b><span>${pretty[k]}</span><span>${Math.round(v)}</span></b><em style="width:${clamp(v)}%"></em></div>`).join("");
+  }
+  function rhythmValue(period, offset=0){
+    const day=(shift*3+recipeIndex+offset);
+    return Math.round(Math.sin((2*Math.PI*day)/period)*100);
+  }
+  function renderAstral(){
+    const z=signData[(recipeIndex+shift+unlocked)%12], house=houses[(recipeIndex+shift*2)%12];
+    $("#astralTitle").textContent=`${z[0]} · House of ${house}`;
+    $("#astralInfo").innerHTML=`
+      <div class="astral-card"><b>Sign</b><p>${z[0]} · ${z[1]} · ${z[2]}</p></div>
+      <div class="astral-card"><b>Planetary Symbol</b><p>${z[3]} · fictional influence: ${z[4]}</p></div>
+      <div class="astral-card"><b>Chromatic Omen</b><p>${z[5]} enters the kitchen rainbow.</p></div>
+      <div class="astral-card"><b>House</b><p>${house}: changes the story flavor of this shift.</p></div>`;
+    $("#rhythms").innerHTML=rhythmDefs.map((r,i)=>{
+      const v=rhythmValue(r[1],i*2), angle=v/100*18;
+      return `<div class="astral-card"><b>${r[0]} ${v>0?"+":""}${v}</b><div class="wave"><i style="transform:rotate(${angle}deg)"></i></div><p>${v>35?"ascending":v<-35?"descending":"crossing"} fictional cycle</p></div>`;
+    }).join("");
+  }
+  function renderVault(){
+    $("#vaultCharacters").innerHTML=cast.map((c,i)=>`<div class="character ${i<unlocked?"unlocked":"locked"}"><div class="face">${c[0]}</div><b>${c[1]}</b><small>${i<unlocked?c[2]:"PROFILE SEALED"}</small></div>`).join("");
+    if(unlocked>=cast.length){
+      $("#belowTitle").textContent="THE HATCH KNOWS YOU";
+      $("#belowText").textContent="All recovered profiles agree on one impossible fact: THE COOK is not a profile of you. It is a role the kitchen has been constructing from every recipe, hesitation, burn, and perfect delivery.";
+      $("#belowBtn").textContent="OPEN THE BELOW";
+    }
+  }
+  function alterClinical(score,timingPerfect,ingredientPerfect){
+    clinical.arousal=clamp(clinical.arousal+(score<7?6:-2));
+    clinical.cognitiveLoad=clamp(clinical.cognitiveLoad+(ingredientPerfect?-2:5));
+    clinical.rumination=clamp(clinical.rumination+(score<7?5:-1));
+    clinical.vigilance=clamp(clinical.vigilance+(timingPerfect?1:3));
+    clinical.impulse=clamp(clinical.impulse+(timingPerfect?-3:4));
+    clinical.executiveControl=clamp(clinical.executiveControl+(ingredientPerfect&&timingPerfect?4:-1));
+    clinical.emotionalRegulation=clamp(clinical.emotionalRegulation+(score>=10?3:-1));
+    clinical.salience=clamp(clinical.salience+2);
+    clinical.realityTesting=clamp(clinical.realityTesting+(score>=10?1:0));
+    clinical.dissociation=clamp(clinical.dissociation+(psyche.shadow>60?2:0));
+    renderDeepPsych(); renderAstral();
+  }
+
+  function renderPsyche(){
+    const names={openness:"Openness",discipline:"Discipline",sociability:"Sociability",empathy:"Empathy",reactivity:"Reactivity",shadow:"Shadow Pressure"};
+    $("#traits").innerHTML=Object.entries(psyche).map(([k,v])=>`<div class="trait"><b><span>${names[k]}</span><span>${Math.round(v)}</span></b><div class="traitbar"><i style="width:${Math.max(0,Math.min(100,v))}%"></i></div></div>`).join("");
+    const z=zodiac[(recipeIndex+shift+unlocked)%zodiac.length];
+    $("#zodiacStrip").style.boxShadow=`0 0 24px ${z.c}55`;
+    let a=psyche.shadow>62?"Shadow":psyche.openness>65?"Explorer":psyche.discipline>65?"Ruler":psyche.empathy>65?"Caregiver":psyche.reactivity>65?"Trickster":"Persona";
+    $("#archetype").textContent=`Archetype: ${a} · ${z.s} ${z.m}`;
+    document.body.classList.toggle("threat",psyche.shadow>55);
+  }
+  function renderCharacters(){
+    $("#characters").innerHTML=cast.map((c,i)=>`<div class="character ${i<unlocked?"unlocked":"locked"}"><div class="face">${c[0]}</div><b>${c[1]}</b><small>${i<unlocked?c[2]:"UNKNOWN"}</small></div>`).join("");
+  }
+  function alterPsyche(score, ingredientPerfect, timingPerfect){
+    psyche.openness=Math.min(100,psyche.openness+(ingredientPerfect?2:1));
+    psyche.discipline=Math.min(100,Math.max(0,psyche.discipline+(timingPerfect?4:-2)));
+    psyche.empathy=Math.min(100,psyche.empathy+(score>=10?2:0));
+    psyche.reactivity=Math.min(100,Math.max(0,psyche.reactivity+(score<7?5:-1)));
+    psyche.shadow=Math.min(100,Math.max(0,psyche.shadow+(score<7?8:2)));
+    psyche.sociability=Math.min(100,psyche.sociability+(score>=10?1:0));
+    renderPsyche();
+    alterClinical(score,timingPerfect,ingredientPerfect);
+  }
+  function unlockCharacter(){
+    if(unlocked>=cast.length) return;
+    const m=memories[unlocked];
+    unlocked++;
+    renderCharacters();
+    renderVault();
+    $("#memoryTitle").textContent=m[0];
+    $("#memoryText").textContent=m[1];
+    $("#memoryFlash").classList.add("show");
+    beep(190,.25);
+  }
 
   function renderIngredients(reveal=false){
     const target = reveal && deliveredRecipe ? deliveredRecipe.need : [];
@@ -419,6 +733,13 @@ button{font:inherit}
     const ingredientMatches = r.need.filter(n=>chosen.includes(n)).length;
     const ingredientPerfect = ingredientMatches===3;
     const activeBurner=burners.findIndex(Boolean);
+    const experimental = !ingredientPerfect;
+    let generated = null;
+    if(experimental){
+      generated=proceduralDish(chosen,activeBurner,cookPos);
+      discoveries.push(generated);
+      if(discoveries.length>30) discoveries.shift();
+    }
     const burnerPerfect=activeBurner===r.burner;
     const heatPerfect=temp>=r.heat[0] && temp<=r.heat[1];
     const timingPerfect=cookPos>=38 && cookPos<=64;
@@ -430,7 +751,10 @@ button{font:inherit}
     score += timingPerfect ? 3 : (cookPos>=30 && cookPos<=76 ? 1 : 0);
 
     let gain=0, verdict="";
-    if(score>=13){
+    if(experimental){
+      gain=Math.max(1,Math.round(generated.quality/20));
+      verdict=generated.quality>78?"ACCIDENTAL MASTERPIECE":generated.quality>55?"STRANGE BUT EDIBLE":generated.oddity>70?"PSYCHIC ANOMALY":"UNKNOWN DISH";
+    } else if(score>=13){
       gain=10; verdict="DIVINE";
     } else if(score>=10){
       gain=6; verdict="DELICIOUS";
@@ -440,29 +764,33 @@ button{font:inherit}
       gain=0; verdict="FAILED OFFERING";
     }
 
+    alterPsyche(score, ingredientPerfect, timingPerfect);
+    if(score>=10 && unlocked < cast.length && (favor+gain)>=unlocked*8) setTimeout(unlockCharacter,450);
     favor += gain;
     $("#favor").textContent=favor;
 
     deliveredRecipe=r;
     selected=[];
     burners=[false,false,false,false];
+    if(experimental) renderDiscoveries();
     $$(".burner").forEach(b=>b.classList.remove("on"));
 
     $("#cookBtn").textContent="NEXT ORDER";
     $("#cookState").textContent=verdict;
     $("#needle").style.left=cookPos+"%";
 
-    $("#log").innerHTML =
-      `<b>${verdict}.</b> ${r.icon} ${r.name} was delivered. ` +
-      `Favor +${gain}. The dish now breaks back apart so you can see the correct recipe ingredients below.`;
+    $("#log").innerHTML = experimental
+      ? `<b>${verdict}.</b> ${generated.icon} <b>${generated.name}</b> emerged from the oven instead of ${r.name}. ${generated.text} Favor +${gain}.`
+      : `<b>${verdict}.</b> ${r.icon} ${r.name} was delivered. Favor +${gain}. The plate dissolves into its ingredients. Somewhere behind you, another cook writes down what you chose.`;
 
     renderIngredients(true);
 
     const correctNames=r.need.map(t=>ingredients.find(x=>x.t===t).n);
-    $("#orderDesc").textContent =
-      `${r.tip} Correct ingredients: ${correctNames.join(" + ")}.`;
+    $("#orderDesc").textContent = experimental
+      ? `Experiment recorded: ${generated.name}. You used ${generated.chosen.map(t=>ingredients.find(i=>i.t===t).n).join(" + ")}. The intended ${r.name} recipe was ${correctNames.join(" + ")}.`
+      : `${r.tip} Correct ingredients: ${correctNames.join(" + ")}.`;
 
-    toast(`${verdict} — recipe revealed`);
+    toast(experimental ? `${generated.icon} ${generated.name}` : `${verdict} — recipe revealed`);
     beep(score>=10?880:180,.18);
   }
 
@@ -506,7 +834,7 @@ button{font:inherit}
   }
 
   const intro = [
-    ["KITCHEN OF THE GODS","The gods no longer ask for impossible food. They ask for things mortals actually cook."],
+    ["KITCHEN OF THE GODS","The gods ask for ordinary food. The machine beneath the oven asks stranger questions."],
     ["EVERY DISH HAS A REAL IDEA","Grilled cheese wants bread, cheese, and butter. Pancakes want flour, eggs, and milk. The game hides the answer until you cook."],
     ["THE STOVETOP IS THE TEST","Choose exactly three ingredients. Then choose the burner you think fits the dish."],
     ["THE OVEN CENTER IS THE MOMENT","Start cooking, watch the doneness line, then tap the center of the oven when the food reaches the green zone."],
@@ -556,6 +884,29 @@ button{font:inherit}
     toast("A new cook has entered the afterlife.");
   };
 
+  
+  $$("#areaNav button").forEach(btn=>btn.onclick=()=>{
+    const area=btn.dataset.area;
+    $$("#areaNav button").forEach(b=>b.classList.toggle("active",b===btn));
+    $$(".area-screen").forEach(s=>s.classList.toggle("active",s.id===`area-${area}`));
+    if(area==="astral") renderAstral();
+    if(area==="psyche") renderDeepPsych();
+    if(area==="vault"||area==="below") renderVault();
+    if(area==="experiment"){renderFormulaExplain();renderDiscoveries();}
+  });
+  $("#belowBtn").onclick=()=>{
+    if(unlocked<cast.length){
+      const remaining=cast.length-unlocked;
+      toast(`${remaining} recovered ${remaining===1?"personality":"personalities"} still required.`);
+      $("#belowText").textContent="Something answers with three knocks. The hatch remains sealed. Perfect and delicious dishes recover the missing profiles.";
+      return;
+    }
+    $("#belowLock").textContent="◉";
+    $("#belowTitle").textContent="THE COOK";
+    $("#belowText").textContent="The hatch opens onto another kitchen. The same oven waits below. On its screen is your accumulated fictional profile, followed by one sentence: YOU WERE NEVER BEING MEASURED. YOU WERE BEING ASSEMBLED.";
+    psyche.shadow=100; renderPsyche(); beep(95,.5);
+  };
+
   // Initial presentation
   const r=currentRecipe();
   $("#orderName").textContent=`${r.icon} ${r.name}`;
@@ -563,6 +914,10 @@ button{font:inherit}
     `${r.subtitle} Figure out the three ingredients from the tray, choose the right burner, then cook it.`;
   $("#cookBtn").textContent="START COOKING";
   renderIngredients();
+  renderPsyche();
+  renderCharacters();
+  renderAreas();
+  $("#memoryClose").onclick=()=>$("#memoryFlash").classList.remove("show");
   setTemp(temp);
   updateProgress();
 })();
