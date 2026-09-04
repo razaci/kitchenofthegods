@@ -85,7 +85,7 @@ button{font:inherit}
 </style>
 </head>
 <body>
-<div id="toast" class="toast">The heavens are watching.</div>
+<div id="toast" class="toast">The kitchen is listening.</div>
 
 <div id="intro" class="overlay">
   <div class="introbox">
@@ -107,7 +107,7 @@ button{font:inherit}
   </div>
 
   <section class="order card">
-    <div class="eyebrow">Current Offering</div>
+    <div class="eyebrow">Current Recipe Challenge</div>
     <h2 id="orderName">Ambrosial Ember Bread</h2>
     <p id="orderDesc">The Gatekeeper wants warmth, sweetness, and a little smoke. Choose 3 ingredients, wake the range, then serve at the sacred moment.</p>
     <div class="progress"><i id="orderProgress"></i></div>
@@ -129,7 +129,7 @@ button{font:inherit}
 
     <div class="controls">
       <button id="heatDown" class="ctrl">− HEAT</button>
-      <button id="cookBtn" class="ctrl primary">COOK OFFERING</button>
+      <button id="cookBtn" class="ctrl primary">START COOKING</button>
       <button id="heatUp" class="ctrl">+ HEAT</button>
     </div>
 
@@ -139,14 +139,14 @@ button{font:inherit}
     </div>
   </section>
 
-  <div class="section-title"><h3>Offering Tray</h3><span>Choose exactly 3</span></div>
+  <div class="section-title"><h3>Ingredient Pantry</h3><span>Pick the 3 that belong</span></div>
   <section id="ingredients" class="ingredients"></section>
 
   <section class="log card" id="log"><b>Oracle:</b> The range is cold. Pick three offerings, then light at least one ember.</section>
 </div>
 
 <div class="bottom">
-  <button id="ordersBtn">DIVINE ORDERS</button>
+  <button id="ordersBtn">RECIPE BOOK</button>
   <button id="loreBtn">KITCHEN LORE</button>
   <button id="resetBtn">NEW SOUL</button>
 </div>
@@ -158,161 +158,415 @@ button{font:inherit}
   </div>
 </div>
 
+
 <script>
 (() => {
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
+
   const ingredients = [
-    {n:"Moon Salt",i:"◌",t:"mineral"},
-    {n:"Sun Honey",i:"✹",t:"sweet"},
-    {n:"Ash Pepper",i:"✦",t:"smoke"},
-    {n:"River Milk",i:"≈",t:"soft"},
-    {n:"Star Flour",i:"✧",t:"grain"},
-    {n:"Ghost Apple",i:"◍",t:"fruit"},
-    {n:"Cloud Butter",i:"☁",t:"rich"},
-    {n:"Oracle Thyme",i:"♧",t:"herb"},
-    {n:"Underworld Cocoa",i:"◆",t:"dark"}
+    {n:"Eggs",i:"🥚",t:"eggs"},
+    {n:"Bread",i:"🍞",t:"bread"},
+    {n:"Butter",i:"🧈",t:"butter"},
+    {n:"Cheese",i:"🧀",t:"cheese"},
+    {n:"Milk",i:"🥛",t:"milk"},
+    {n:"Flour",i:"🌾",t:"flour"},
+    {n:"Tomato",i:"🍅",t:"tomato"},
+    {n:"Pasta",i:"🍝",t:"pasta"},
+    {n:"Garlic",i:"🧄",t:"garlic"},
+    {n:"Potato",i:"🥔",t:"potato"},
+    {n:"Rice",i:"🍚",t:"rice"},
+    {n:"Chicken",i:"🍗",t:"chicken"},
+    {n:"Onion",i:"🧅",t:"onion"},
+    {n:"Apple",i:"🍎",t:"apple"},
+    {n:"Sugar",i:"🍬",t:"sugar"},
+    {n:"Cinnamon",i:"🟤",t:"cinnamon"},
+    {n:"Oil",i:"🫗",t:"oil"},
+    {n:"Herbs",i:"🌿",t:"herbs"}
   ];
-  const orders = [
-    {name:"Ambrosial Ember Bread", need:["grain","sweet","smoke"], desc:"The Gatekeeper wants warmth, sweetness, and a little smoke."},
-    {name:"Moonmilk Custard", need:["soft","sweet","rich"], desc:"A lunar judge requests a quiet dessert with no mortal bitterness."},
-    {name:"Oracle Apple Tart", need:["fruit","grain","herb"], desc:"The prophet refuses to speak until the crust smells like a memory."},
-    {name:"Underworld Night Cake", need:["dark","sweet","rich"], desc:"A chthonic king demands a cake darker than the room around it."},
-    {name:"Pilgrim Hearth Loaf", need:["grain","mineral","herb"], desc:"A tired spirit asks for the taste of a home it cannot return to."}
+
+  const recipes = [
+    {
+      name:"Golden Grilled Cheese",
+      subtitle:"A real kitchen classic, offered to a sun god.",
+      need:["bread","cheese","butter"],
+      burner:1,
+      heat:[250,360],
+      tip:"Bread + cheese + butter. Medium heat gives the crust time to brown before the cheese burns.",
+      icon:"🥪"
+    },
+    {
+      name:"Temple Scrambled Eggs",
+      subtitle:"Soft eggs for the keepers of dawn.",
+      need:["eggs","butter","milk"],
+      burner:0,
+      heat:[180,300],
+      tip:"Eggs + butter + a little milk. Lower heat gives softer curds.",
+      icon:"🍳"
+    },
+    {
+      name:"Oracle Tomato Pasta",
+      subtitle:"A simple red sauce for the halls beyond time.",
+      need:["pasta","tomato","garlic"],
+      burner:2,
+      heat:[280,420],
+      tip:"Pasta + tomato + garlic. The sauce wants a steady simmer, not a violent boil.",
+      icon:"🍝"
+    },
+    {
+      name:"Afterlife Roasted Potatoes",
+      subtitle:"Crisp edges, soft middle, eternal approval.",
+      need:["potato","oil","herbs"],
+      burner:3,
+      heat:[340,460],
+      tip:"Potatoes + oil + herbs. Hotter cooking helps the outside brown.",
+      icon:"🥔"
+    },
+    {
+      name:"Pilgrim Rice Bowl",
+      subtitle:"A humble meal for souls crossing the long bridge.",
+      need:["rice","chicken","onion"],
+      burner:2,
+      heat:[260,390],
+      tip:"Rice + chicken + onion. Cook steadily and do not rush the center.",
+      icon:"🍚"
+    },
+    {
+      name:"Celestial Apple Toast",
+      subtitle:"Sweet, warm, and simple enough for mortal kitchens.",
+      need:["bread","apple","cinnamon"],
+      burner:1,
+      heat:[220,340],
+      tip:"Bread + apple + cinnamon. Gentle heat keeps the fruit sweet instead of scorched.",
+      icon:"🍎"
+    },
+    {
+      name:"Moonlight Pancake",
+      subtitle:"Breakfast requested by a god who has never seen morning.",
+      need:["flour","eggs","milk"],
+      burner:0,
+      heat:[240,340],
+      tip:"Flour + eggs + milk. Medium heat lets the middle set while the surface browns.",
+      icon:"🥞"
+    },
+    {
+      name:"Divine Cheese Omelet",
+      subtitle:"Folded at the exact moment the heavens go quiet.",
+      need:["eggs","cheese","butter"],
+      burner:0,
+      heat:[190,300],
+      tip:"Eggs + cheese + butter. Keep it gentle so the eggs stay tender.",
+      icon:"🍳"
+    },
+    {
+      name:"Gatekeeper Garlic Toast",
+      subtitle:"The aroma opens doors that keys cannot.",
+      need:["bread","butter","garlic"],
+      burner:1,
+      heat:[250,360],
+      tip:"Bread + butter + garlic. Toast until fragrant and golden, not black.",
+      icon:"🥖"
+    },
+    {
+      name:"Starlit Apple Cake",
+      subtitle:"A tiny cake for a constellation that learned to eat.",
+      need:["flour","apple","sugar"],
+      burner:3,
+      heat:[320,430],
+      tip:"Flour + apple + sugar. Baking needs stable heat more than speed.",
+      icon:"🍰"
+    }
   ];
-  let orderIndex=0, favor=0, shift=1, temp=120, selected=[], burners=[false,false,false,false];
-  let cooking=false, cookPos=3, cookTimer=null, direction=1, introStep=0;
+
+  let recipeIndex = 0;
+  let favor = 0;
+  let shift = 1;
+  let temp = 260;
+  let selected = [];
+  let burners = [false,false,false,false];
+  let cooking = false;
+  let cookPos = 4;
+  let cookTimer = null;
+  let direction = 1;
+  let introStep = 0;
+  let deliveredRecipe = null;
 
   function beep(freq=440,dur=.08){
     try {
-      const A=window.AudioContext||window.webkitAudioContext, a=new A(), o=a.createOscillator(), g=a.createGain();
-      o.connect(g); g.connect(a.destination); o.frequency.value=freq; g.gain.value=.04; o.start();
-      g.gain.exponentialRampToValueAtTime(.001,a.currentTime+dur); o.stop(a.currentTime+dur);
+      const A=window.AudioContext||window.webkitAudioContext;
+      const a=new A(), o=a.createOscillator(), g=a.createGain();
+      o.connect(g); g.connect(a.destination); o.frequency.value=freq;
+      g.gain.value=.04; o.start();
+      g.gain.exponentialRampToValueAtTime(.001,a.currentTime+dur);
+      o.stop(a.currentTime+dur);
     } catch(e){}
   }
 
   function toast(msg){
-    const t=$("#toast"); t.textContent=msg; t.classList.add("show"); setTimeout(()=>t.classList.remove("show"),1500);
+    const t=$("#toast");
+    t.textContent=msg;
+    t.classList.add("show");
+    setTimeout(()=>t.classList.remove("show"),1700);
   }
 
-  function renderIngredients(){
-    $("#ingredients").innerHTML = ingredients.map((x,idx)=>`
-      <button class="ing ${selected.includes(idx)?"selected":""}" data-i="${idx}">
-        <span class="icon">${x.i}</span><b>${x.n}</b><small>${x.t}</small>
-      </button>`).join("");
+  function currentRecipe(){ return recipes[recipeIndex]; }
+
+  function renderIngredients(reveal=false){
+    const target = reveal && deliveredRecipe ? deliveredRecipe.need : [];
+    $("#ingredients").innerHTML = ingredients.map((x,idx)=>{
+      const isSel=selected.includes(idx);
+      const isReveal=target.includes(x.t);
+      return `
+        <button class="ing ${isSel?"selected":""}" data-i="${idx}"
+          style="${isReveal ? 'outline:2px solid var(--cyan);box-shadow:0 0 20px rgba(142,232,255,.20)' : ''}">
+          <span class="icon">${x.i}</span>
+          <b>${x.n}</b>
+          <small>${isReveal ? "USED IN DISH" : "ingredient"}</small>
+        </button>`;
+    }).join("");
     $$(".ing").forEach(b=>b.onclick=()=>selectIngredient(+b.dataset.i));
   }
 
   function selectIngredient(i){
-    if(cooking) return toast("Hands off while the offering cooks.");
+    if(cooking) return toast("The pan is already cooking.");
+    if(deliveredRecipe) return toast("Tap NEXT ORDER after studying the ingredients.");
     if(selected.includes(i)) selected=selected.filter(x=>x!==i);
     else if(selected.length<3) selected.push(i);
-    else return toast("The tray accepts only three.");
+    else return toast("This recipe takes exactly three ingredients.");
+
     beep(selected.includes(i)?620:330);
-    renderIngredients(); updateProgress();
-    $("#log").innerHTML=`<b>Tray:</b> ${selected.length?selected.map(i=>ingredients[i].n).join(", "):"Empty"}.`;
+    renderIngredients();
+    updateProgress();
+
+    const names=selected.map(i=>ingredients[i].n);
+    $("#log").innerHTML = names.length
+      ? `<b>Prep tray:</b> ${names.join(" + ")}.`
+      : `<b>Prep tray:</b> Empty.`;
   }
 
   function updateProgress(){
-    const lit=burners.filter(Boolean).length;
-    let p = selected.length/3*55 + (lit?20:0) + (cooking?25:0);
+    const lit = burners.filter(Boolean).length;
+    let p = selected.length/3*55 + (lit?15:0) + (cooking?30:0);
     $("#orderProgress").style.width=Math.min(100,p)+"%";
   }
 
   function setTemp(v){
-    temp=Math.max(60,Math.min(520,v));
+    temp=Math.max(120,Math.min(500,v));
     $("#temp").textContent=temp;
-    $("#heatGlow").style.opacity=(.18 + temp/750).toFixed(2);
+    $("#heatGlow").style.opacity=(.18 + temp/720).toFixed(2);
   }
 
   $$(".burner").forEach(b=>b.onclick=()=>{
-    let i=+b.dataset.burner; burners[i]=!burners[i]; b.classList.toggle("on",burners[i]);
-    beep(burners[i]?210:120); updateProgress();
-    $("#log").innerHTML=`<b>Range:</b> ${burners.filter(Boolean).length} sacred ember${burners.filter(Boolean).length===1?"":"s"} burning.`;
+    if(cooking) return toast("Do not change burners mid-cook.");
+    if(deliveredRecipe) return toast("The dish has already been delivered.");
+
+    const i=+b.dataset.burner;
+    burners = burners.map((_,j)=>j===i ? !burners[j] : false);
+    $$(".burner").forEach((btn,j)=>btn.classList.toggle("on",burners[j]));
+
+    beep(burners[i]?210:120);
+    updateProgress();
+    $("#log").innerHTML = burners[i]
+      ? `<b>Stovetop:</b> Burner ${i+1} is active.`
+      : `<b>Stovetop:</b> All burners are off.`;
   });
-  $("#heatUp").onclick=()=>{setTemp(temp+20);beep(520)};
-  $("#heatDown").onclick=()=>{setTemp(temp-20);beep(300)};
 
-  function cook(){
-    if(cooking) return serve();
-    if(selected.length!==3) return toast("Choose three ingredients first.");
-    if(!burners.some(Boolean)) return toast("Light at least one stovetop ember.");
-    cooking=true; cookPos=6; direction=1;
-    $("#cookBtn").textContent="SERVE NOW";
+  $("#heatUp").onclick=()=>{
+    if(cooking) return toast("Heat is locked while cooking.");
+    setTemp(temp+20); beep(520);
+  };
+  $("#heatDown").onclick=()=>{
+    if(cooking) return toast("Heat is locked while cooking.");
+    setTemp(temp-20); beep(300);
+  };
+
+  function beginCook(){
+    if(selected.length!==3) return toast("Pick the three ingredients first.");
+    const active = burners.findIndex(Boolean);
+    if(active<0) return toast("Choose the burner for this food.");
+
+    cooking=true;
+    cookPos=4;
+    direction=1;
+    $("#cookBtn").textContent="TAP OVEN CENTER TO FINISH";
     $("#cookState").textContent="COOKING";
-    $("#log").innerHTML="<b>Oracle:</b> Watch the doneness line. Serve in the green.";
-    updateProgress(); beep(740,.12);
+    $("#log").innerHTML="<b>Oracle:</b> Watch the doneness line. Tap the glowing oven center when the food reaches the green zone.";
+    updateProgress();
+    beep(740,.12);
+
     clearInterval(cookTimer);
-    const speed = Math.max(38, 120 - burners.filter(Boolean).length*12 - Math.floor(temp/100)*4);
+    const speed=Math.max(42,115-Math.floor(temp/18));
     cookTimer=setInterval(()=>{
-      cookPos += direction*(0.9 + temp/500);
-      if(cookPos>97){cookPos=97;direction=-1}
-      if(cookPos<2){cookPos=2;direction=1}
+      cookPos += direction*(0.72 + temp/620);
+      if(cookPos>96){ cookPos=96; direction=-1; }
+      if(cookPos<2){ cookPos=2; direction=1; }
+
       $("#needle").style.left=cookPos+"%";
-      $("#cookState").textContent = cookPos<35?"WARMING":cookPos<64?"SACRED":cookPos<78?"BROWNING":"BURNING";
-    }, speed);
+      $("#cookState").textContent =
+        cookPos<35 ? "RAW" :
+        cookPos<65 ? "READY" :
+        cookPos<80 ? "BROWNING" :
+        "OVERCOOKING";
+    },speed);
   }
 
-  function serve(){
-    clearInterval(cookTimer); cooking=false;
-    const types=selected.map(i=>ingredients[i].t);
-    const need=orders[orderIndex].need;
-    const matches=need.filter(n=>types.includes(n)).length;
-    const timing = cookPos>=40 && cookPos<=64 ? 3 : cookPos>=32 && cookPos<=75 ? 2 : 0;
-    const heat = temp>=180 && temp<=420 ? 1 : 0;
-    const score = matches*2 + timing + heat;
-    let gain=0,msg="";
-    if(score>=9){gain=9;msg="PERFECT OFFERING — the god remembers your name."}
-    else if(score>=6){gain=5;msg="ACCEPTED — the dish crosses the veil."}
-    else if(score>=3){gain=2;msg="TOLERATED — divine eyebrows are raised."}
-    else {gain=-1;msg="REJECTED — something in eternity just coughed."}
-    favor=Math.max(0,favor+gain); $("#favor").textContent=favor;
-    $("#log").innerHTML=`<b>Judgment:</b> ${msg} Favor ${gain>=0?"+":""}${gain}.`;
-    $("#cookBtn").textContent="COOK OFFERING"; $("#cookState").textContent="WAITING";
-    beep(score>=6?880:140,.18); toast(msg);
-    setTimeout(nextOrder,1400);
-  }
-  $("#cookBtn").onclick=cook;
+  function finishCook(){
+    clearInterval(cookTimer);
+    cooking=false;
 
-  function nextOrder(){
-    orderIndex=(orderIndex+1)%orders.length;
-    if(orderIndex===0) shift++;
-    selected=[]; burners=[false,false,false,false]; $$(".burner").forEach(b=>b.classList.remove("on"));
+    const r=currentRecipe();
+    const chosen=selected.map(i=>ingredients[i].t);
+    const ingredientMatches = r.need.filter(n=>chosen.includes(n)).length;
+    const ingredientPerfect = ingredientMatches===3;
+    const activeBurner=burners.findIndex(Boolean);
+    const burnerPerfect=activeBurner===r.burner;
+    const heatPerfect=temp>=r.heat[0] && temp<=r.heat[1];
+    const timingPerfect=cookPos>=38 && cookPos<=64;
+
+    let score=0;
+    score += ingredientMatches*2;
+    score += burnerPerfect ? 2 : 0;
+    score += heatPerfect ? 2 : 0;
+    score += timingPerfect ? 3 : (cookPos>=30 && cookPos<=76 ? 1 : 0);
+
+    let gain=0, verdict="";
+    if(score>=13){
+      gain=10; verdict="DIVINE";
+    } else if(score>=10){
+      gain=6; verdict="DELICIOUS";
+    } else if(score>=7){
+      gain=3; verdict="EDIBLE";
+    } else {
+      gain=0; verdict="FAILED OFFERING";
+    }
+
+    favor += gain;
+    $("#favor").textContent=favor;
+
+    deliveredRecipe=r;
+    selected=[];
+    burners=[false,false,false,false];
+    $$(".burner").forEach(b=>b.classList.remove("on"));
+
+    $("#cookBtn").textContent="NEXT ORDER";
+    $("#cookState").textContent=verdict;
+    $("#needle").style.left=cookPos+"%";
+
+    $("#log").innerHTML =
+      `<b>${verdict}.</b> ${r.icon} ${r.name} was delivered. ` +
+      `Favor +${gain}. The dish now breaks back apart so you can see the correct recipe ingredients below.`;
+
+    renderIngredients(true);
+
+    const correctNames=r.need.map(t=>ingredients.find(x=>x.t===t).n);
+    $("#orderDesc").textContent =
+      `${r.tip} Correct ingredients: ${correctNames.join(" + ")}.`;
+
+    toast(`${verdict} — recipe revealed`);
+    beep(score>=10?880:180,.18);
+  }
+
+  $("#cookBtn").onclick=()=>{
+    if(deliveredRecipe) return nextRecipe();
+    if(cooking) return finishCook();
+    beginCook();
+  };
+
+  // Make the oven center itself the finish button.
+  $(".oven-wrap").onclick=(e)=>{
+    if(!cooking) return;
+    finishCook();
+  };
+  $(".oven-wrap").style.cursor="pointer";
+
+  function nextRecipe(){
+    deliveredRecipe=null;
+    recipeIndex=(recipeIndex+1)%recipes.length;
+    if(recipeIndex===0) shift++;
+
+    selected=[];
+    burners=[false,false,false,false];
+    cooking=false;
+    cookPos=4;
+    direction=1;
+
     $("#shift").textContent=shift;
-    const o=orders[orderIndex];
-    $("#orderName").textContent=o.name;
-    $("#orderDesc").textContent=o.desc+" Choose 3 ingredients, wake the range, then serve at the sacred moment.";
-    $("#needle").style.left="3%";
-    renderIngredients();updateProgress();
-    $("#log").innerHTML="<b>Oracle:</b> A new presence has entered the dining hall.";
+    $("#needle").style.left="4%";
+    $("#cookState").textContent="WAITING";
+    $("#cookBtn").textContent="START COOKING";
+
+    const r=currentRecipe();
+    $("#orderName").textContent=`${r.icon} ${r.name}`;
+    $("#orderDesc").textContent =
+      `${r.subtitle} Figure out the three ingredients from the tray, choose the right burner, then cook it.`;
+    $("#orderProgress").style.width="0%";
+
+    renderIngredients();
+    $("#log").innerHTML="<b>Oracle:</b> New order. The recipe is hidden until you deliver it.";
   }
 
   const intro = [
-    ["KITCHEN OF THE GODS","You died with a spoon in your hand. That was apparently enough experience to get hired."],
-    ["THE AFTERLIFE HAS A DINNER RUSH","Gods, judges, dead kings, lost travelers, and things without names all order from one kitchen."],
-    ["THE OVEN IS OLDER THAN HEAVEN","Choose three ingredients. Light the stovetop embers. Control the heat. Cook the offering."],
-    ["SERVE AT THE SACRED MOMENT","The moving line is doneness. Green is divine. Too early is insult. Too late is ash."],
-    ["SHIFT ONE: THE GATEKEEPER","Your first customer has not smiled in nine thousand years. Feed him."]
+    ["KITCHEN OF THE GODS","The gods no longer ask for impossible food. They ask for things mortals actually cook."],
+    ["EVERY DISH HAS A REAL IDEA","Grilled cheese wants bread, cheese, and butter. Pancakes want flour, eggs, and milk. The game hides the answer until you cook."],
+    ["THE STOVETOP IS THE TEST","Choose exactly three ingredients. Then choose the burner you think fits the dish."],
+    ["THE OVEN CENTER IS THE MOMENT","Start cooking, watch the doneness line, then tap the center of the oven when the food reaches the green zone."],
+    ["THE DISH BECOMES ITS INGREDIENTS","After delivery, the finished food breaks back apart and highlights the ingredients you actually needed. Learn it, then move on."]
   ];
+
   $("#introBtn").onclick=()=>{
     introStep++;
     beep(560);
-    if(introStep>=intro.length){$("#intro").classList.add("hidden"); return;}
-    $("#introTitle").innerHTML=intro[introStep][0].replace(" ","<br>");
+
+    if(introStep>=intro.length){
+      $("#intro").classList.add("hidden");
+      return;
+    }
+
+    $("#introTitle").innerHTML=intro[introStep][0].replaceAll(" ","<br>");
     $("#introText").textContent=intro[introStep][1];
-    $("#introBtn").textContent=introStep===intro.length-1?"ENTER THE KITCHEN ✦":"CONTINUE ✦";
+    $("#introBtn").textContent =
+      introStep===intro.length-1 ? "ENTER THE DIVINE KITCHEN ✦" : "CONTINUE ✦";
   };
 
-  function modal(html){$("#modalBody").innerHTML=html;$("#modal").classList.remove("hidden")}
+  function modal(html){
+    $("#modalBody").innerHTML=html;
+    $("#modal").classList.remove("hidden");
+  }
+
   $("#closeModal").onclick=()=>$("#modal").classList.add("hidden");
-  $("#ordersBtn").onclick=()=>modal(`<h2>Divine Orders</h2><p>${orders.map((o,i)=>`${i+1}. <b>${o.name}</b> — seeks ${o.need.join(", ")}.`).join("<br><br>")}</p>`);
-  $("#loreBtn").onclick=()=>modal(`<h2>Kitchen Lore</h2><p>The Eternal Range was found already burning before the first dead soul arrived. Nobody knows who built it. Every accepted meal adds a memory to its iron. Every burned meal whispers from the vents.</p><p><b>Gameplay:</b> Ingredient match + heat + timing determine favor. More active embers make the doneness needle move faster.</p>`);
+
+  $("#ordersBtn").onclick=()=>modal(`
+    <h2>Recipe Book</h2>
+    <p>${recipes.map((r,i)=>
+      `${i+1}. <b>${r.icon} ${r.name}</b><br>${r.tip}`
+    ).join("<br><br>")}</p>
+  `);
+
+  $("#loreBtn").onclick=()=>modal(`
+    <h2>How the Eternal Range Works</h2>
+    <p>The food is fictionalized, but the ingredient combinations are based on familiar real-world cooking ideas.</p>
+    <p><b>Round:</b> identify three ingredients → choose a burner → set heat → start cooking → tap the oven center in the ready zone → deliver → reveal the correct ingredients.</p>
+    <p>The game rewards ingredient knowledge, heat choice, burner choice, and timing.</p>
+  `);
+
   $("#resetBtn").onclick=()=>{
-    favor=0;shift=1;orderIndex=-1;$("#favor").textContent=0;nextOrder();toast("A new soul has clocked in.");
+    favor=0; shift=1; recipeIndex=-1; deliveredRecipe=null;
+    $("#favor").textContent=0;
+    nextRecipe();
+    toast("A new cook has entered the afterlife.");
   };
 
-  renderIngredients(); setTemp(temp); updateProgress();
+  // Initial presentation
+  const r=currentRecipe();
+  $("#orderName").textContent=`${r.icon} ${r.name}`;
+  $("#orderDesc").textContent =
+    `${r.subtitle} Figure out the three ingredients from the tray, choose the right burner, then cook it.`;
+  $("#cookBtn").textContent="START COOKING";
+  renderIngredients();
+  setTemp(temp);
+  updateProgress();
 })();
 </script>
+
 </body>
 </html>
