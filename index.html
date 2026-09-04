@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#090911">
+<title>Kitchen of the Gods — Afterlife Simulator</title>
+<style>
+:root {
+  --gold:#f2d27a; --cyan:#8ee8ff; --ember:#ff7a3d; --ink:#080910;
+  --panel:rgba(19,20,33,.86); --line:rgba(242,210,122,.28); --text:#f6f1e6;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;background:#07070d;color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+body{background-image:linear-gradient(rgba(3,3,7,.20),rgba(3,3,7,.72)),url("data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTIwMCIgaGVpZ2h0PSIxODAwIiB2aWV3Qm94PSIwIDAgMTIwMCAxODAwIj4KPGRlZnM+CjxyYWRpYWxHcmFkaWVudCBpZD0iZyIgY3g9IjUwJSIgY3k9IjIwJSIgcj0iODAlIj4KPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzQzMTVmIi8+CjxzdG9wIG9mZnNldD0iLjQ1IiBzdG9wLWNvbG9yPSIjMTgxNzJlIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzA3MDcwZCIvPgo8L3JhZGlhbEdyYWRpZW50Pgo8ZmlsdGVyIGlkPSJibHVyIj48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIxOCIvPjwvZmlsdGVyPgo8L2RlZnM+CjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjE4MDAiIGZpbGw9InVybCgjZykiLz4KPGNpcmNsZSBjeD0iMTgwIiBjeT0iMjYwIiByPSIxMjAiIGZpbGw9IiNmZmQzNmEiIG9wYWNpdHk9Ii4wOSIgZmlsdGVyPSJ1cmwoI2JsdXIpIi8+CjxjaXJjbGUgY3g9Ijk4MCIgY3k9IjQ4MCIgcj0iMTgwIiBmaWxsPSIjOWFmNmZmIiBvcGFjaXR5PSIuMDYiIGZpbHRlcj0idXJsKCNibHVyKSIvPgo8cGF0aCBkPSJNMCAxMTIwIEMzMDAgMTAyMCA1MjAgMTIzMCA3ODAgMTEyMCBTMTEyMCAxMDIwIDEyMDAgMTEyMFYxODAwSDBaIiBmaWxsPSIjMGMwZDE4Ii8+CjxnIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii41Ij4KPGNpcmNsZSBjeD0iODUiIGN5PSIxMTAiIHI9IjIiLz48Y2lyY2xlIGN4PSIyNTAiIGN5PSIxODAiIHI9IjEuNSIvPjxjaXJjbGUgY3g9IjQxMCIgY3k9IjkwIiByPSIyIi8+CjxjaXJjbGUgY3g9IjcwNSIgY3k9IjE1NSIgcj0iMS42Ii8+PGNpcmNsZSBjeD0iOTYwIiBjeT0iMTIwIiByPSIyIi8+PGNpcmNsZSBjeD0iMTA4MCIgY3k9IjIyNSIgcj0iMS41Ii8+CjxjaXJjbGUgY3g9IjE0NSIgY3k9IjU5MCIgcj0iMS40Ii8+PGNpcmNsZSBjeD0iODUwIiBjeT0iNjcwIiByPSIxLjQiLz48Y2lyY2xlIGN4PSIxMDQwIiBjeT0iODIwIiByPSIyIi8+CjwvZz4KPC9zdmc+Cg==");background-size:cover;background-attachment:fixed}
+button{font:inherit}
+.app{width:min(100%,760px);margin:auto;min-height:100dvh;padding:14px 14px 110px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;position:sticky;top:0;z-index:10;background:linear-gradient(#080910 75%,transparent);padding:8px 0 16px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:900;letter-spacing:.08em;font-size:13px}
+.brand img{width:38px;height:38px;border-radius:50%;box-shadow:0 0 20px rgba(242,210,122,.25)}
+.stats{display:flex;gap:7px;font-size:12px}
+.pill{padding:8px 10px;border:1px solid var(--line);background:rgba(13,14,24,.75);border-radius:999px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:0 16px 40px rgba(0,0,0,.25);backdrop-filter:blur(10px)}
+.order{padding:15px;margin-bottom:12px}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:800}
+.order h2{margin:6px 0 4px;font-size:22px}
+.order p{margin:0;color:#c9c5d4;font-size:13px;line-height:1.45}
+.progress{height:7px;background:#0d0e16;border-radius:999px;overflow:hidden;margin-top:12px}
+.progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--gold));transition:.35s}
+.altar{position:relative;padding:12px 10px 14px;margin-bottom:12px;overflow:hidden}
+.altar:before{content:"";position:absolute;inset:18% 8% 0;background:radial-gradient(circle,rgba(255,132,67,.16),transparent 64%);pointer-events:none}
+.oven-title{display:flex;justify-content:space-between;align-items:center;padding:6px 10px 0}
+.oven-title b{font-size:15px;letter-spacing:.08em}
+.temp{font-weight:900;color:var(--gold)}
+.oven-wrap{position:relative;margin:2px auto 0;max-width:580px}
+.oven-img{width:100%;display:block;filter:drop-shadow(0 28px 30px rgba(0,0,0,.45))}
+.heat-glow{position:absolute;left:26%;right:26%;bottom:18%;height:29%;border-radius:30%;background:radial-gradient(circle,#ffbf65aa,#ff431444 45%,transparent 72%);filter:blur(10px);opacity:.35;transition:.25s;pointer-events:none}
+.burners{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 12px 4px;margin-top:-56px;position:relative;z-index:2}
+.burner{aspect-ratio:1;border-radius:50%;border:1px solid #8b8291;background:radial-gradient(circle at 50% 45%,#242531,#08090d 62%);color:#aaa;box-shadow:inset 0 0 0 6px rgba(255,255,255,.03);font-size:10px;font-weight:800}
+.burner.on{color:#ffe3a0;box-shadow:0 0 24px rgba(255,105,48,.38),inset 0 0 0 6px rgba(255,111,49,.12);border-color:#f4a05a}
+.controls{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:12px}
+.ctrl{border:1px solid var(--line);background:#12131e;color:#fff;border-radius:15px;padding:12px 8px;font-weight:800}
+.ctrl:active{transform:translateY(1px);background:#1b1d2a}
+.ctrl.primary{background:linear-gradient(180deg,#f3d77f,#b48a30);color:#211707;border:none}
+.meterbox{padding:0 14px 14px}
+.meterlabel{display:flex;justify-content:space-between;font-size:11px;color:#cfcada;margin-bottom:6px}
+.doneness{height:15px;border-radius:999px;background:linear-gradient(90deg,#385bff 0 25%,#4cd782 40% 62%,#ffbf47 72%,#fb4f3c 100%);position:relative;border:1px solid rgba(255,255,255,.15)}
+.needle{position:absolute;top:-5px;width:5px;height:25px;background:white;border-radius:4px;left:3%;box-shadow:0 0 10px white;transition:left .08s linear}
+.section-title{display:flex;justify-content:space-between;align-items:end;margin:14px 2px 8px}
+.section-title h3{margin:0;font-size:15px}
+.section-title span{font-size:11px;color:#aaa5b7}
+.ingredients{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.ing{min-height:104px;padding:10px;border-radius:18px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(28,29,44,.95),rgba(13,14,22,.95));color:#fff;text-align:left;position:relative;overflow:hidden}
+.ing .icon{font-size:25px;display:block;margin-bottom:7px}
+.ing b{font-size:12px;display:block}
+.ing small{font-size:10px;color:#aaa7b4}
+.ing.selected{outline:2px solid var(--gold);box-shadow:0 0 18px rgba(242,210,122,.18)}
+.ing.locked{opacity:.4}
+.log{margin-top:12px;padding:13px;min-height:74px;font-size:12px;line-height:1.45;color:#cbc8d2}
+.log b{color:var(--cyan)}
+.bottom{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);width:min(calc(100% - 24px),736px);display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;z-index:12}
+.bottom button{padding:13px 8px;border-radius:16px;border:1px solid var(--line);background:rgba(11,12,20,.95);color:#fff;font-size:11px;font-weight:900;backdrop-filter:blur(12px)}
+.overlay{position:fixed;inset:0;z-index:50;background:radial-gradient(circle at 50% 20%,#24213f,#07070d 66%);display:flex;align-items:center;justify-content:center;padding:22px}
+.introbox{width:min(100%,620px);text-align:center}
+.intro-seal{width:170px;max-width:48vw;filter:drop-shadow(0 0 34px rgba(242,210,122,.22));animation:float 3.2s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px)}}
+.introbox h1{font-size:clamp(31px,8vw,58px);line-height:.96;margin:20px 0 10px}
+.introbox p{color:#d5d0db;line-height:1.5;min-height:66px}
+.bigstart{width:100%;padding:17px;border:0;border-radius:18px;background:linear-gradient(180deg,#f5da86,#b7882e);font-weight:1000;color:#23180a;font-size:16px;box-shadow:0 10px 35px rgba(242,210,122,.18)}
+.hidden{display:none!important}
+.modal{position:fixed;inset:0;z-index:40;background:rgba(4,4,8,.76);display:flex;align-items:flex-end;justify-content:center;padding:14px}
+.sheet{width:min(100%,720px);max-height:80dvh;overflow:auto;padding:18px;border-radius:24px 24px 18px 18px;background:#11121d;border:1px solid var(--line)}
+.sheet h2{margin:0 0 8px}
+.sheet p{color:#c5c1ce;line-height:1.5}
+.close{width:100%;padding:14px;border:1px solid var(--line);background:#1a1b28;color:#fff;border-radius:14px;font-weight:900}
+.toast{position:fixed;top:78px;left:50%;transform:translateX(-50%) translateY(-20px);z-index:80;background:#f3d77f;color:#211707;padding:10px 14px;border-radius:999px;font-weight:900;font-size:12px;opacity:0;transition:.25s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media (max-width:430px){
+  .app{padding-left:10px;padding-right:10px}
+  .order h2{font-size:19px}
+  .burners{margin-top:-45px}
+  .ingredients{grid-template-columns:repeat(3,1fr)}
+  .ing{min-height:96px;padding:9px}
+}
+</style>
+</head>
+<body>
+<div id="toast" class="toast">The heavens are watching.</div>
+
+<div id="intro" class="overlay">
+  <div class="introbox">
+    <img class="intro-seal" src="data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiPgo8Y2lyY2xlIGN4PSIyNTAiIGN5PSIyNTAiIHI9IjIyMCIgZmlsbD0iIzE1MTUyMiIgc3Ryb2tlPSIjZTdjOTc5IiBzdHJva2Utd2lkdGg9IjE0Ii8+CjxjaXJjbGUgY3g9IjI1MCIgY3k9IjI1MCIgcj0iMTY2IiBmaWxsPSJub25lIiBzdHJva2U9IiM4ZWU4ZmYiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWRhc2hhcnJheT0iMTQgMTgiLz4KPHBhdGggZD0iTTI1MCA5MiBMMjg4IDIwMiBMNDA2IDIwMiBMMzEwIDI3MCBMMzQ2IDM4NSBMMjUwIDMxNiBMMTU0IDM4NSBMMTkwIDI3MCBMOTQgMjAyIEwyMTIgMjAyWiIgZmlsbD0iI2QzYjQ1ZiIgb3BhY2l0eT0iLjkyIi8+CjxjaXJjbGUgY3g9IjI1MCIgY3k9IjI1MCIgcj0iNzIiIGZpbGw9IiMyMDE2MmEiIHN0cm9rZT0iI2ZmZjBhOCIgc3Ryb2tlLXdpZHRoPSI1Ii8+Cjwvc3ZnPgo=" alt="">
+    <div class="eyebrow">Afterlife Culinary Division</div>
+    <h1 id="introTitle">KITCHEN<br>OF THE GODS</h1>
+    <p id="introText">You died with a spoon in your hand. That was apparently enough experience to get hired.</p>
+    <button id="introBtn" class="bigstart">CONTINUE ✦</button>
+  </div>
+</div>
+
+<div class="app">
+  <div class="topbar">
+    <div class="brand"><img src="data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiPgo8Y2lyY2xlIGN4PSIyNTAiIGN5PSIyNTAiIHI9IjIyMCIgZmlsbD0iIzE1MTUyMiIgc3Ryb2tlPSIjZTdjOTc5IiBzdHJva2Utd2lkdGg9IjE0Ii8+CjxjaXJjbGUgY3g9IjI1MCIgY3k9IjI1MCIgcj0iMTY2IiBmaWxsPSJub25lIiBzdHJva2U9IiM4ZWU4ZmYiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWRhc2hhcnJheT0iMTQgMTgiLz4KPHBhdGggZD0iTTI1MCA5MiBMMjg4IDIwMiBMNDA2IDIwMiBMMzEwIDI3MCBMMzQ2IDM4NSBMMjUwIDMxNiBMMTU0IDM4NSBMMTkwIDI3MCBMOTQgMjAyIEwyMTIgMjAyWiIgZmlsbD0iI2QzYjQ1ZiIgb3BhY2l0eT0iLjkyIi8+CjxjaXJjbGUgY3g9IjI1MCIgY3k9IjI1MCIgcj0iNzIiIGZpbGw9IiMyMDE2MmEiIHN0cm9rZT0iI2ZmZjBhOCIgc3Ryb2tlLXdpZHRoPSI1Ii8+Cjwvc3ZnPgo=" alt=""> DIVINE RANGE 7</div>
+    <div class="stats">
+      <div class="pill">Favor <b id="favor">0</b></div>
+      <div class="pill">Shift <b id="shift">1</b></div>
+    </div>
+  </div>
+
+  <section class="order card">
+    <div class="eyebrow">Current Offering</div>
+    <h2 id="orderName">Ambrosial Ember Bread</h2>
+    <p id="orderDesc">The Gatekeeper wants warmth, sweetness, and a little smoke. Choose 3 ingredients, wake the range, then serve at the sacred moment.</p>
+    <div class="progress"><i id="orderProgress"></i></div>
+  </section>
+
+  <section class="altar card">
+    <div class="oven-title"><b>THE ETERNAL RANGE</b><span class="temp"><span id="temp">120</span>°</span></div>
+    <div class="oven-wrap">
+      <div id="heatGlow" class="heat-glow"></div>
+      <img class="oven-img" src="data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9Ijg1MCIgdmlld0JveD0iMCAwIDkwMCA4NTAiPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJtIiB4MT0iMCIgeDI9IjEiPgo8c3RvcCBzdG9wLWNvbG9yPSIjNDAzYTQ2Ii8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iIzE2MTYxZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzU1NTA1YiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmFkaWFsR3JhZGllbnQgaWQ9ImYiPgo8c3RvcCBzdG9wLWNvbG9yPSIjZmZkMjc3Ii8+PHN0b3Agb2Zmc2V0PSIuMzUiIHN0b3AtY29sb3I9IiNmZjc0M2EiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMzNjBiMDgiLz4KPC9yYWRpYWxHcmFkaWVudD4KPC9kZWZzPgo8cmVjdCB4PSI5MCIgeT0iNDAiIHdpZHRoPSI3MjAiIGhlaWdodD0iNzcwIiByeD0iNjAiIGZpbGw9InVybCgjbSkiIHN0cm9rZT0iIzliOGZhNiIgc3Ryb2tlLXdpZHRoPSI4Ii8+CjxyZWN0IHg9IjE0NSIgeT0iMTMwIiB3aWR0aD0iNjEwIiBoZWlnaHQ9IjEyNSIgcng9IjI0IiBmaWxsPSIjMGQwZjE0IiBzdHJva2U9IiM3YTcwN2QiIHN0cm9rZS13aWR0aD0iNSIvPgo8Y2lyY2xlIGN4PSIyMjAiIGN5PSIxOTEiIHI9IjM0IiBmaWxsPSIjMTExIiBzdHJva2U9IiNiN2E5YmYiIHN0cm9rZS13aWR0aD0iNCIvPgo8Y2lyY2xlIGN4PSIzNDAiIGN5PSIxOTEiIHI9IjM0IiBmaWxsPSIjMTExIiBzdHJva2U9IiNiN2E5YmYiIHN0cm9rZS13aWR0aD0iNCIvPgo8Y2lyY2xlIGN4PSI1NjAiIGN5PSIxOTEiIHI9IjM0IiBmaWxsPSIjMTExIiBzdHJva2U9IiNiN2E5YmYiIHN0cm9rZS13aWR0aD0iNCIvPgo8Y2lyY2xlIGN4PSI2ODAiIGN5PSIxOTEiIHI9IjM0IiBmaWxsPSIjMTExIiBzdHJva2U9IiNiN2E5YmYiIHN0cm9rZS13aWR0aD0iNCIvPgo8cmVjdCB4PSIyMTIiIHk9IjI5MCIgd2lkdGg9IjQ3NiIgaGVpZ2h0PSI0MTAiIHJ4PSIzNCIgZmlsbD0iIzA4MDkwZSIgc3Ryb2tlPSIjOGY4NDk1IiBzdHJva2Utd2lkdGg9IjgiLz4KPHJlY3QgeD0iMjQ4IiB5PSIzMzUiIHdpZHRoPSI0MDQiIGhlaWdodD0iMzAwIiByeD0iMjAiIGZpbGw9InVybCgjZikiIG9wYWNpdHk9Ii45NiIvPgo8cGF0aCBkPSJNMjcwIDU3NyBDMzYwIDQ4MCA0MzAgNjAwIDUwMiA0OTUgUzYxMCA1MTAgNjM4IDQwNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZkNzk2IiBzdHJva2Utd2lkdGg9IjEzIiBvcGFjaXR5PSIuOCIvPgo8cmVjdCB4PSIyMzgiIHk9IjI3OCIgd2lkdGg9IjQyNSIgaGVpZ2h0PSIyNiIgcng9IjEzIiBmaWxsPSIjYjRhOGJhIi8+CjxjaXJjbGUgY3g9IjQ1MCIgY3k9IjE5MiIgcj0iMTMiIGZpbGw9IiNmZmQ5NzQiLz4KPC9zdmc+Cg==" alt="Celestial oven">
+    </div>
+
+    <div class="burners">
+      <button class="burner" data-burner="0">EMBER I</button>
+      <button class="burner" data-burner="1">EMBER II</button>
+      <button class="burner" data-burner="2">EMBER III</button>
+      <button class="burner" data-burner="3">EMBER IV</button>
+    </div>
+
+    <div class="controls">
+      <button id="heatDown" class="ctrl">− HEAT</button>
+      <button id="cookBtn" class="ctrl primary">COOK OFFERING</button>
+      <button id="heatUp" class="ctrl">+ HEAT</button>
+    </div>
+
+    <div class="meterbox">
+      <div class="meterlabel"><span>FROZEN</span><b id="cookState">WAITING</b><span>ASH</span></div>
+      <div class="doneness"><i id="needle" class="needle"></i></div>
+    </div>
+  </section>
+
+  <div class="section-title"><h3>Offering Tray</h3><span>Choose exactly 3</span></div>
+  <section id="ingredients" class="ingredients"></section>
+
+  <section class="log card" id="log"><b>Oracle:</b> The range is cold. Pick three offerings, then light at least one ember.</section>
+</div>
+
+<div class="bottom">
+  <button id="ordersBtn">DIVINE ORDERS</button>
+  <button id="loreBtn">KITCHEN LORE</button>
+  <button id="resetBtn">NEW SOUL</button>
+</div>
+
+<div id="modal" class="modal hidden">
+  <div class="sheet">
+    <div id="modalBody"></div>
+    <button class="close" id="closeModal">CLOSE</button>
+  </div>
+</div>
+
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const $$ = s => [...document.querySelectorAll(s)];
+  const ingredients = [
+    {n:"Moon Salt",i:"◌",t:"mineral"},
+    {n:"Sun Honey",i:"✹",t:"sweet"},
+    {n:"Ash Pepper",i:"✦",t:"smoke"},
+    {n:"River Milk",i:"≈",t:"soft"},
+    {n:"Star Flour",i:"✧",t:"grain"},
+    {n:"Ghost Apple",i:"◍",t:"fruit"},
+    {n:"Cloud Butter",i:"☁",t:"rich"},
+    {n:"Oracle Thyme",i:"♧",t:"herb"},
+    {n:"Underworld Cocoa",i:"◆",t:"dark"}
+  ];
+  const orders = [
+    {name:"Ambrosial Ember Bread", need:["grain","sweet","smoke"], desc:"The Gatekeeper wants warmth, sweetness, and a little smoke."},
+    {name:"Moonmilk Custard", need:["soft","sweet","rich"], desc:"A lunar judge requests a quiet dessert with no mortal bitterness."},
+    {name:"Oracle Apple Tart", need:["fruit","grain","herb"], desc:"The prophet refuses to speak until the crust smells like a memory."},
+    {name:"Underworld Night Cake", need:["dark","sweet","rich"], desc:"A chthonic king demands a cake darker than the room around it."},
+    {name:"Pilgrim Hearth Loaf", need:["grain","mineral","herb"], desc:"A tired spirit asks for the taste of a home it cannot return to."}
+  ];
+  let orderIndex=0, favor=0, shift=1, temp=120, selected=[], burners=[false,false,false,false];
+  let cooking=false, cookPos=3, cookTimer=null, direction=1, introStep=0;
+
+  function beep(freq=440,dur=.08){
+    try {
+      const A=window.AudioContext||window.webkitAudioContext, a=new A(), o=a.createOscillator(), g=a.createGain();
+      o.connect(g); g.connect(a.destination); o.frequency.value=freq; g.gain.value=.04; o.start();
+      g.gain.exponentialRampToValueAtTime(.001,a.currentTime+dur); o.stop(a.currentTime+dur);
+    } catch(e){}
+  }
+
+  function toast(msg){
+    const t=$("#toast"); t.textContent=msg; t.classList.add("show"); setTimeout(()=>t.classList.remove("show"),1500);
+  }
+
+  function renderIngredients(){
+    $("#ingredients").innerHTML = ingredients.map((x,idx)=>`
+      <button class="ing ${selected.includes(idx)?"selected":""}" data-i="${idx}">
+        <span class="icon">${x.i}</span><b>${x.n}</b><small>${x.t}</small>
+      </button>`).join("");
+    $$(".ing").forEach(b=>b.onclick=()=>selectIngredient(+b.dataset.i));
+  }
+
+  function selectIngredient(i){
+    if(cooking) return toast("Hands off while the offering cooks.");
+    if(selected.includes(i)) selected=selected.filter(x=>x!==i);
+    else if(selected.length<3) selected.push(i);
+    else return toast("The tray accepts only three.");
+    beep(selected.includes(i)?620:330);
+    renderIngredients(); updateProgress();
+    $("#log").innerHTML=`<b>Tray:</b> ${selected.length?selected.map(i=>ingredients[i].n).join(", "):"Empty"}.`;
+  }
+
+  function updateProgress(){
+    const lit=burners.filter(Boolean).length;
+    let p = selected.length/3*55 + (lit?20:0) + (cooking?25:0);
+    $("#orderProgress").style.width=Math.min(100,p)+"%";
+  }
+
+  function setTemp(v){
+    temp=Math.max(60,Math.min(520,v));
+    $("#temp").textContent=temp;
+    $("#heatGlow").style.opacity=(.18 + temp/750).toFixed(2);
+  }
+
+  $$(".burner").forEach(b=>b.onclick=()=>{
+    let i=+b.dataset.burner; burners[i]=!burners[i]; b.classList.toggle("on",burners[i]);
+    beep(burners[i]?210:120); updateProgress();
+    $("#log").innerHTML=`<b>Range:</b> ${burners.filter(Boolean).length} sacred ember${burners.filter(Boolean).length===1?"":"s"} burning.`;
+  });
+  $("#heatUp").onclick=()=>{setTemp(temp+20);beep(520)};
+  $("#heatDown").onclick=()=>{setTemp(temp-20);beep(300)};
+
+  function cook(){
+    if(cooking) return serve();
+    if(selected.length!==3) return toast("Choose three ingredients first.");
+    if(!burners.some(Boolean)) return toast("Light at least one stovetop ember.");
+    cooking=true; cookPos=6; direction=1;
+    $("#cookBtn").textContent="SERVE NOW";
+    $("#cookState").textContent="COOKING";
+    $("#log").innerHTML="<b>Oracle:</b> Watch the doneness line. Serve in the green.";
+    updateProgress(); beep(740,.12);
+    clearInterval(cookTimer);
+    const speed = Math.max(38, 120 - burners.filter(Boolean).length*12 - Math.floor(temp/100)*4);
+    cookTimer=setInterval(()=>{
+      cookPos += direction*(0.9 + temp/500);
+      if(cookPos>97){cookPos=97;direction=-1}
+      if(cookPos<2){cookPos=2;direction=1}
+      $("#needle").style.left=cookPos+"%";
+      $("#cookState").textContent = cookPos<35?"WARMING":cookPos<64?"SACRED":cookPos<78?"BROWNING":"BURNING";
+    }, speed);
+  }
+
+  function serve(){
+    clearInterval(cookTimer); cooking=false;
+    const types=selected.map(i=>ingredients[i].t);
+    const need=orders[orderIndex].need;
+    const matches=need.filter(n=>types.includes(n)).length;
+    const timing = cookPos>=40 && cookPos<=64 ? 3 : cookPos>=32 && cookPos<=75 ? 2 : 0;
+    const heat = temp>=180 && temp<=420 ? 1 : 0;
+    const score = matches*2 + timing + heat;
+    let gain=0,msg="";
+    if(score>=9){gain=9;msg="PERFECT OFFERING — the god remembers your name."}
+    else if(score>=6){gain=5;msg="ACCEPTED — the dish crosses the veil."}
+    else if(score>=3){gain=2;msg="TOLERATED — divine eyebrows are raised."}
+    else {gain=-1;msg="REJECTED — something in eternity just coughed."}
+    favor=Math.max(0,favor+gain); $("#favor").textContent=favor;
+    $("#log").innerHTML=`<b>Judgment:</b> ${msg} Favor ${gain>=0?"+":""}${gain}.`;
+    $("#cookBtn").textContent="COOK OFFERING"; $("#cookState").textContent="WAITING";
+    beep(score>=6?880:140,.18); toast(msg);
+    setTimeout(nextOrder,1400);
+  }
+  $("#cookBtn").onclick=cook;
+
+  function nextOrder(){
+    orderIndex=(orderIndex+1)%orders.length;
+    if(orderIndex===0) shift++;
+    selected=[]; burners=[false,false,false,false]; $$(".burner").forEach(b=>b.classList.remove("on"));
+    $("#shift").textContent=shift;
+    const o=orders[orderIndex];
+    $("#orderName").textContent=o.name;
+    $("#orderDesc").textContent=o.desc+" Choose 3 ingredients, wake the range, then serve at the sacred moment.";
+    $("#needle").style.left="3%";
+    renderIngredients();updateProgress();
+    $("#log").innerHTML="<b>Oracle:</b> A new presence has entered the dining hall.";
+  }
+
+  const intro = [
+    ["KITCHEN OF THE GODS","You died with a spoon in your hand. That was apparently enough experience to get hired."],
+    ["THE AFTERLIFE HAS A DINNER RUSH","Gods, judges, dead kings, lost travelers, and things without names all order from one kitchen."],
+    ["THE OVEN IS OLDER THAN HEAVEN","Choose three ingredients. Light the stovetop embers. Control the heat. Cook the offering."],
+    ["SERVE AT THE SACRED MOMENT","The moving line is doneness. Green is divine. Too early is insult. Too late is ash."],
+    ["SHIFT ONE: THE GATEKEEPER","Your first customer has not smiled in nine thousand years. Feed him."]
+  ];
+  $("#introBtn").onclick=()=>{
+    introStep++;
+    beep(560);
+    if(introStep>=intro.length){$("#intro").classList.add("hidden"); return;}
+    $("#introTitle").innerHTML=intro[introStep][0].replace(" ","<br>");
+    $("#introText").textContent=intro[introStep][1];
+    $("#introBtn").textContent=introStep===intro.length-1?"ENTER THE KITCHEN ✦":"CONTINUE ✦";
+  };
+
+  function modal(html){$("#modalBody").innerHTML=html;$("#modal").classList.remove("hidden")}
+  $("#closeModal").onclick=()=>$("#modal").classList.add("hidden");
+  $("#ordersBtn").onclick=()=>modal(`<h2>Divine Orders</h2><p>${orders.map((o,i)=>`${i+1}. <b>${o.name}</b> — seeks ${o.need.join(", ")}.`).join("<br><br>")}</p>`);
+  $("#loreBtn").onclick=()=>modal(`<h2>Kitchen Lore</h2><p>The Eternal Range was found already burning before the first dead soul arrived. Nobody knows who built it. Every accepted meal adds a memory to its iron. Every burned meal whispers from the vents.</p><p><b>Gameplay:</b> Ingredient match + heat + timing determine favor. More active embers make the doneness needle move faster.</p>`);
+  $("#resetBtn").onclick=()=>{
+    favor=0;shift=1;orderIndex=-1;$("#favor").textContent=0;nextOrder();toast("A new soul has clocked in.");
+  };
+
+  renderIngredients(); setTemp(temp); updateProgress();
+})();
+</script>
+</body>
+</html>
