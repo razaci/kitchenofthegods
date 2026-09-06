@@ -1,927 +1,437 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="theme-color" content="#090911">
-<title>Psyche Kitchen — Afterlife Thriller</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Alchemy Kitchen</title>
 <style>
-:root {
-  --gold:#f2d27a; --cyan:#8ee8ff; --ember:#ff7a3d; --ink:#080910;
-  --panel:rgba(19,20,33,.86); --line:rgba(242,210,122,.28); --text:#f6f1e6;
+:root{
+  --bg:#100c0a; --panel:#211712; --panel2:#2d1f17; --gold:#f2bf58; --cream:#fff4d6;
+  --green:#7fd38a; --red:#ff7a78; --blue:#79cfff; --muted:#bba995; --shadow:rgba(0,0,0,.35);
 }
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;min-height:100%;background:#07070d;color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-body{background-image:linear-gradient(rgba(3,3,7,.20),rgba(3,3,7,.72)),url("data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTIwMCIgaGVpZ2h0PSIxODAwIiB2aWV3Qm94PSIwIDAgMTIwMCAxODAwIj4KPGRlZnM+CjxyYWRpYWxHcmFkaWVudCBpZD0iZyIgY3g9IjUwJSIgY3k9IjIwJSIgcj0iODAlIj4KPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzQzMTVmIi8+CjxzdG9wIG9mZnNldD0iLjQ1IiBzdG9wLWNvbG9yPSIjMTgxNzJlIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzA3MDcwZCIvPgo8L3JhZGlhbEdyYWRpZW50Pgo8ZmlsdGVyIGlkPSJibHVyIj48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIxOCIvPjwvZmlsdGVyPgo8L2RlZnM+CjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjE4MDAiIGZpbGw9InVybCgjZykiLz4KPGNpcmNsZSBjeD0iMTgwIiBjeT0iMjYwIiByPSIxMjAiIGZpbGw9IiNmZmQzNmEiIG9wYWNpdHk9Ii4wOSIgZmlsdGVyPSJ1cmwoI2JsdXIpIi8+CjxjaXJjbGUgY3g9Ijk4MCIgY3k9IjQ4MCIgcj0iMTgwIiBmaWxsPSIjOWFmNmZmIiBvcGFjaXR5PSIuMDYiIGZpbHRlcj0idXJsKCNibHVyKSIvPgo8cGF0aCBkPSJNMCAxMTIwIEMzMDAgMTAyMCA1MjAgMTIzMCA3ODAgMTEyMCBTMTEyMCAxMDIwIDEyMDAgMTEyMFYxODAwSDBaIiBmaWxsPSIjMGMwZDE4Ii8+CjxnIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii41Ij4KPGNpcmNsZSBjeD0iODUiIGN5PSIxMTAiIHI9IjIiLz48Y2lyY2xlIGN4PSIyNTAiIGN5PSIxODAiIHI9IjEuNSIvPjxjaXJjbGUgY3g9IjQxMCIgY3k9IjkwIiByPSIyIi8+CjxjaXJjbGUgY3g9IjcwNSIgY3k9IjE1NSIgcj0iMS42Ii8+PGNpcmNsZSBjeD0iOTYwIiBjeT0iMTIwIiByPSIyIi8+PGNpcmNsZSBjeD0iMTA4MCIgY3k9IjIyNSIgcj0iMS41Ii8+CjxjaXJjbGUgY3g9IjE0NSIgY3k9IjU5MCIgcj0iMS40Ii8+PGNpcmNsZSBjeD0iODUwIiBjeT0iNjcwIiByPSIxLjQiLz48Y2lyY2xlIGN4PSIxMDQwIiBjeT0iODIwIiByPSIyIi8+CjwvZz4KPC9zdmc+Cg==");background-size:cover;background-attachment:fixed}
+*{box-sizing:border-box}
+body{
+  margin:0; color:var(--cream); background:
+  radial-gradient(circle at 50% -20%,#5a321c 0,#1b120e 32%,#0d0908 70%);
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  min-height:100vh;
+}
 button{font:inherit}
-.app{width:min(100%,760px);margin:auto;min-height:100dvh;padding:14px 14px 110px}
-.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;position:sticky;top:0;z-index:10;background:linear-gradient(#080910 75%,transparent);padding:8px 0 16px}
-.brand{display:flex;align-items:center;gap:9px;font-weight:900;letter-spacing:.08em;font-size:13px}
-.brand img{width:38px;height:38px;border-radius:50%;box-shadow:0 0 20px rgba(242,210,122,.25)}
-.stats{display:flex;gap:7px;font-size:12px}
-.pill{padding:8px 10px;border:1px solid var(--line);background:rgba(13,14,24,.75);border-radius:999px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:0 16px 40px rgba(0,0,0,.25);backdrop-filter:blur(10px)}
-.order{padding:15px;margin-bottom:12px}
-.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:800}
-.order h2{margin:6px 0 4px;font-size:22px}
-.order p{margin:0;color:#c9c5d4;font-size:13px;line-height:1.45}
-.progress{height:7px;background:#0d0e16;border-radius:999px;overflow:hidden;margin-top:12px}
-.progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--gold));transition:.35s}
-.altar{position:relative;padding:12px 10px 14px;margin-bottom:12px;overflow:hidden}
-.altar:before{content:"";position:absolute;inset:18% 8% 0;background:radial-gradient(circle,rgba(255,132,67,.16),transparent 64%);pointer-events:none}
-.oven-title{display:flex;justify-content:space-between;align-items:center;padding:6px 10px 0}
-.oven-title b{font-size:15px;letter-spacing:.08em}
-.temp{font-weight:900;color:var(--gold)}
-.oven-wrap{position:relative;margin:2px auto 0;max-width:580px}
-.oven-img{width:100%;display:block;filter:drop-shadow(0 28px 30px rgba(0,0,0,.45))}
-.heat-glow{position:absolute;left:26%;right:26%;bottom:18%;height:29%;border-radius:30%;background:radial-gradient(circle,#ffbf65aa,#ff431444 45%,transparent 72%);filter:blur(10px);opacity:.35;transition:.25s;pointer-events:none}
-.burners{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 12px 4px;margin-top:-56px;position:relative;z-index:2}
-.burner{aspect-ratio:1;border-radius:50%;border:1px solid #8b8291;background:radial-gradient(circle at 50% 45%,#242531,#08090d 62%);color:#aaa;box-shadow:inset 0 0 0 6px rgba(255,255,255,.03);font-size:10px;font-weight:800}
-.burner.on{color:#ffe3a0;box-shadow:0 0 24px rgba(255,105,48,.38),inset 0 0 0 6px rgba(255,111,49,.12);border-color:#f4a05a}
-.controls{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:12px}
-.ctrl{border:1px solid var(--line);background:#12131e;color:#fff;border-radius:15px;padding:12px 8px;font-weight:800}
-.ctrl:active{transform:translateY(1px);background:#1b1d2a}
-.ctrl.primary{background:linear-gradient(180deg,#f3d77f,#b48a30);color:#211707;border:none}
-.meterbox{padding:0 14px 14px}
-.meterlabel{display:flex;justify-content:space-between;font-size:11px;color:#cfcada;margin-bottom:6px}
-.doneness{height:15px;border-radius:999px;background:linear-gradient(90deg,#385bff 0 25%,#4cd782 40% 62%,#ffbf47 72%,#fb4f3c 100%);position:relative;border:1px solid rgba(255,255,255,.15)}
-.needle{position:absolute;top:-5px;width:5px;height:25px;background:white;border-radius:4px;left:3%;box-shadow:0 0 10px white;transition:left .08s linear}
-.section-title{display:flex;justify-content:space-between;align-items:end;margin:14px 2px 8px}
-.section-title h3{margin:0;font-size:15px}
-.section-title span{font-size:11px;color:#aaa5b7}
-.ingredients{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
-.ing{min-height:104px;padding:10px;border-radius:18px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(28,29,44,.95),rgba(13,14,22,.95));color:#fff;text-align:left;position:relative;overflow:hidden}
-.ing .icon{font-size:25px;display:block;margin-bottom:7px}
-.ing b{font-size:12px;display:block}
-.ing small{font-size:10px;color:#aaa7b4}
-.ing.selected{outline:2px solid var(--gold);box-shadow:0 0 18px rgba(242,210,122,.18)}
-.ing.locked{opacity:.4}
-.log{margin-top:12px;padding:13px;min-height:74px;font-size:12px;line-height:1.45;color:#cbc8d2}
-.log b{color:var(--cyan)}
-.bottom{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);width:min(calc(100% - 24px),736px);display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;z-index:12}
-.bottom button{padding:13px 8px;border-radius:16px;border:1px solid var(--line);background:rgba(11,12,20,.95);color:#fff;font-size:11px;font-weight:900;backdrop-filter:blur(12px)}
-.overlay{position:fixed;inset:0;z-index:50;background:radial-gradient(circle at 50% 20%,#24213f,#07070d 66%);display:flex;align-items:center;justify-content:center;padding:22px}
-.introbox{width:min(100%,620px);text-align:center}
-.intro-seal{width:170px;max-width:48vw;filter:drop-shadow(0 0 34px rgba(242,210,122,.22));animation:float 3.2s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-8px)}}
-.introbox h1{font-size:clamp(31px,8vw,58px);line-height:.96;margin:20px 0 10px}
-.introbox p{color:#d5d0db;line-height:1.5;min-height:66px}
-.bigstart{width:100%;padding:17px;border:0;border-radius:18px;background:linear-gradient(180deg,#f5da86,#b7882e);font-weight:1000;color:#23180a;font-size:16px;box-shadow:0 10px 35px rgba(242,210,122,.18)}
-.hidden{display:none!important}
-.modal{position:fixed;inset:0;z-index:40;background:rgba(4,4,8,.76);display:flex;align-items:flex-end;justify-content:center;padding:14px}
-.sheet{width:min(100%,720px);max-height:80dvh;overflow:auto;padding:18px;border-radius:24px 24px 18px 18px;background:#11121d;border:1px solid var(--line)}
-.sheet h2{margin:0 0 8px}
-.sheet p{color:#c5c1ce;line-height:1.5}
-.close{width:100%;padding:14px;border:1px solid var(--line);background:#1a1b28;color:#fff;border-radius:14px;font-weight:900}
-.toast{position:fixed;top:78px;left:50%;transform:translateX(-50%) translateY(-20px);z-index:80;background:#f3d77f;color:#211707;padding:10px 14px;border-radius:999px;font-weight:900;font-size:12px;opacity:0;transition:.25s;pointer-events:none}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-@media (max-width:430px){
-  .app{padding-left:10px;padding-right:10px}
-  .order h2{font-size:19px}
-  .burners{margin-top:-45px}
-  .ingredients{grid-template-columns:repeat(3,1fr)}
-  .ing{min-height:96px;padding:9px}
+.app{max-width:980px;margin:0 auto;padding:12px 12px 88px}
+.hero{
+  padding:18px;border:1px solid #5e4027;border-radius:22px;
+  background:linear-gradient(180deg,#3b2518,#1e1511);
+  box-shadow:0 12px 35px var(--shadow); position:relative; overflow:hidden;
 }
-
-/* PSYCHE THRILLER LAYER */
-.psyche-panel{padding:14px;margin:12px 0;background:linear-gradient(145deg,rgba(20,17,34,.95),rgba(9,10,17,.96));border:1px solid rgba(166,132,255,.28);border-radius:22px}
-.psyche-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px}
-.psyche-head h3{margin:0;font-size:15px}.psyche-head small{color:#aaa4bb}
-.traits{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-.trait{padding:9px;border:1px solid rgba(255,255,255,.07);border-radius:13px;background:#10111b;font-size:10px}
-.trait b{display:flex;justify-content:space-between;margin-bottom:6px;font-size:10px}
-.traitbar{height:5px;border-radius:10px;background:#252636;overflow:hidden}.traitbar i{display:block;height:100%;background:linear-gradient(90deg,#8ee8ff,#f2d27a);transition:.3s}
-.zodiac-strip{height:9px;border-radius:999px;margin:11px 0;background:linear-gradient(90deg,#ff5b5b,#ff9f43,#ffe66d,#56d879,#54c7ec,#6574ff,#9b6bff,#d968d7,#ff5b8d);box-shadow:0 0 18px rgba(151,112,255,.22)}
-.shadowmsg{font-size:12px;line-height:1.45;color:#d4cedc;padding:10px 11px;border-left:2px solid #a684ff;background:rgba(166,132,255,.06);border-radius:0 12px 12px 0}
-.character-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
-.character{padding:10px 7px;border-radius:15px;text-align:center;background:#0e0f18;border:1px solid rgba(255,255,255,.07);min-height:92px}
-.character .face{font-size:25px}.character b{display:block;font-size:10px;margin-top:5px}.character small{font-size:9px;color:#9691a4}
-.character.locked{filter:grayscale(1);opacity:.35}.character.unlocked{border-color:#f2d27a;box-shadow:0 0 16px rgba(242,210,122,.12)}
-body.threat{animation:threatPulse 1.8s ease-in-out infinite}
-@keyframes threatPulse{50%{box-shadow:inset 0 0 70px rgba(117,35,74,.14)}}
-.memory-flash{position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;padding:25px;background:rgba(5,4,10,.91);opacity:0;pointer-events:none;transition:.25s}
-.memory-flash.show{opacity:1;pointer-events:auto}.memory-card{max-width:520px;padding:24px;text-align:center;border:1px solid rgba(242,210,122,.28);border-radius:24px;background:#10111b}
-.memory-card h2{margin:0 0 10px}.memory-card p{line-height:1.55;color:#d2ccd8}
-
-/* MAIN AREAS / ASTRAL SYSTEM */
-.area-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:10px 0 12px}
-.area-nav button{padding:10px 4px;border-radius:13px;border:1px solid rgba(242,210,122,.18);background:rgba(12,13,22,.94);color:#ddd7e6;font-size:9px;font-weight:900;letter-spacing:.03em}
-.area-nav button.active{border-color:#f2d27a;color:#fff1b5;box-shadow:0 0 18px rgba(242,210,122,.12)}
-.area-screen{display:none}.area-screen.active{display:block}
-.astral-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-.astral-card{padding:11px;border:1px solid rgba(255,255,255,.07);border-radius:15px;background:#0e0f18}
-.astral-card b{font-size:11px}.astral-card p{font-size:10px;color:#aaa5b4;line-height:1.4;margin:5px 0 0}
-.wave{height:38px;position:relative;overflow:hidden;border-radius:10px;background:#0a0b12;margin-top:6px}
-.wave i{position:absolute;left:0;right:0;top:50%;height:2px;background:linear-gradient(90deg,#ff5b5b,#ffe66d,#56d879,#54c7ec,#9b6bff,#ff5b8d);transform-origin:center;box-shadow:0 0 9px rgba(142,232,255,.25)}
-.psychiatric-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:10px}
-.psychstat{padding:8px;border-radius:12px;background:#0c0d15;border:1px solid rgba(255,255,255,.06);font-size:9px}
-.psychstat b{display:flex;justify-content:space-between;margin-bottom:5px}
-.psychstat em{display:block;height:4px;border-radius:5px;background:linear-gradient(90deg,#7666ff,#f2d27a)}
-.below{padding:18px;text-align:center;border:1px solid rgba(143,72,116,.35);background:radial-gradient(circle at 50% 0,rgba(101,42,91,.20),#0a0b12 65%);border-radius:22px}
-.below h2{letter-spacing:.14em}.below p{color:#bbb4c4;line-height:1.55;font-size:12px}
-.lockmark{font-size:34px;opacity:.65}
-
-/* PROCEDURAL RECIPE ENGINE */
-.formula-box{padding:13px;margin-top:10px;border-radius:16px;background:#0b0c14;border:1px solid rgba(142,232,255,.13)}
-.formula-box h4{margin:0 0 8px;font-size:11px;letter-spacing:.08em;color:#8ee8ff}
-.formula-row{display:grid;grid-template-columns:1fr auto;gap:8px;font-size:10px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)}
-.formula-row:last-child{border:0}.formula-row span:last-child{color:#f2d27a;font-weight:800}
-.discovery{padding:13px;margin:10px 0;border-radius:17px;background:linear-gradient(145deg,rgba(45,31,57,.8),rgba(11,12,20,.95));border:1px solid rgba(242,210,122,.18)}
-.discovery .dishicon{font-size:36px}.discovery h3{margin:4px 0}.discovery p{font-size:11px;color:#bbb5c5;line-height:1.45}
+.hero:after{
+  content:""; position:absolute; inset:auto -50px -110px auto; width:260px;height:260px;
+  border-radius:50%; background:radial-gradient(circle,#ffb84d66,#ff7a0000 70%);
+}
+h1{margin:0;font-size:clamp(28px,7vw,52px);letter-spacing:-1px}
+.subtitle{color:var(--muted);margin:8px 0 0;max-width:720px;line-height:1.45}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+.stat{background:#160f0caa;border:1px solid #4a3324;padding:10px;border-radius:14px;text-align:center}
+.stat b{display:block;font-size:18px;color:var(--gold)}
+.nav{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0}
+.nav button,.bigbtn,.smallbtn{
+  border:1px solid #5b3d28;background:linear-gradient(#382519,#241810);color:var(--cream);
+  border-radius:14px;padding:12px 10px;font-weight:800;box-shadow:0 4px 0 #130c08;
+}
+.nav button.active,.bigbtn.primary{background:linear-gradient(#d8902f,#9a5f1d);color:#1a1008;border-color:#f1bc65}
+.nav button:active,.bigbtn:active,.smallbtn:active{transform:translateY(2px);box-shadow:0 2px 0 #130c08}
+.panel{display:none;background:linear-gradient(180deg,#211713,#17100d);border:1px solid #4e3727;border-radius:20px;padding:14px}
+.panel.active{display:block}
+.section-title{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:10px}
+.section-title h2{margin:0;font-size:22px}
+.tip{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px}
+.card{
+  border:1px solid #4b3628;border-radius:16px;padding:10px;background:linear-gradient(#2b1d16,#1d1410);
+  min-height:114px;position:relative
+}
+.card.selected{outline:2px solid var(--gold);background:linear-gradient(#4c311c,#2b1c12)}
+.card h3{font-size:15px;margin:0 0 5px}
+.card p{font-size:12px;color:var(--muted);margin:3px 0;line-height:1.3}
+.emoji{font-size:30px;line-height:1;margin-bottom:7px}
+.badge{display:inline-block;padding:3px 6px;border-radius:999px;font-size:10px;background:#4d3424;color:#f5d39a;margin:2px}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.recipebox,.resultbox{
+  border:1px dashed #6b4a31;background:#130e0b;border-radius:16px;padding:12px;margin-top:12px
+}
+.resultbox{min-height:92px}
+.ok{color:var(--green)} .bad{color:var(--red)} .info{color:var(--blue)}
+.progress{height:10px;background:#0e0907;border-radius:20px;overflow:hidden;margin-top:6px}
+.progress > div{height:100%;background:linear-gradient(90deg,#d9872c,#ffd57b);width:0}
+.kitchen-stage{
+  display:grid;grid-template-columns:1.3fr .7fr;gap:12px;margin-top:10px
+}
+.appliance{
+  background:
+    radial-gradient(circle at 50% 30%,#6b321c 0 8%,transparent 9%),
+    linear-gradient(#2b2a29,#111);
+  border:1px solid #555;border-radius:20px;min-height:260px;padding:14px;position:relative;overflow:hidden
+}
+.appliance:before{
+  content:"";position:absolute;left:12%;right:12%;bottom:25px;height:12px;border-radius:50%;
+  background:#ff8b2466;box-shadow:0 0 40px #ff7020;
+}
+.appliance h2{margin:0}
+.pot{
+  width:145px;height:90px;background:linear-gradient(#777,#333);border-radius:10px 10px 40px 40px;
+  position:absolute;left:50%;transform:translateX(-50%);bottom:50px;border:4px solid #111;
+  display:flex;align-items:center;justify-content:center;font-size:34px
+}
+.slotbox{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.slot{background:#352419;border:1px solid #68452d;border-radius:10px;padding:7px 9px;font-size:12px}
+.methodgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.methodgrid button{padding:11px}
+.search{width:100%;padding:12px 14px;border-radius:14px;border:1px solid #5b402d;background:#100c0a;color:white;margin-bottom:10px}
+.recipe-list{display:grid;gap:9px}
+.recipe{border:1px solid #4e3727;border-radius:16px;padding:12px;background:#241912}
+.recipe h3{margin:0 0 6px}
+.recipe details{margin-top:7px}
+.footerbar{
+  position:fixed;bottom:0;left:0;right:0;background:#120c09ee;border-top:1px solid #4c3322;
+  backdrop-filter:blur(10px);padding:8px 10px calc(8px + env(safe-area-inset-bottom));z-index:20
+}
+.footerbar>div{max-width:980px;margin:0 auto;display:flex;gap:8px}
+.footerbar button{flex:1}
+.toast{
+  position:fixed;top:18px;left:50%;transform:translateX(-50%) translateY(-20px);
+  background:#ffdc93;color:#281509;font-weight:800;padding:10px 15px;border-radius:999px;opacity:0;
+  transition:.25s;z-index:99;pointer-events:none
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:720px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .nav{grid-template-columns:repeat(3,1fr)}
+  .kitchen-stage{grid-template-columns:1fr}
+  .appliance{min-height:230px}
+}
 </style>
 </head>
 <body>
-<div id="memoryFlash" class="memory-flash"><div class="memory-card"><div class="eyebrow">Recovered Memory</div><h2 id="memoryTitle">THE SHADOW</h2><p id="memoryText"></p><button class="close" id="memoryClose">RETURN TO RANGE</button></div></div>
-<div id="toast" class="toast">The kitchen is listening.</div>
-
-<div id="intro" class="overlay">
-  <div class="introbox">
-    <img class="intro-seal" src="data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiPgo8Y2lyY2xlIGN4PSIyNTAiIGN5PSIyNTAiIHI9IjIyMCIgZmlsbD0iIzE1MTUyMiIgc3Ryb2tlPSIjZTdjOTc5IiBzdHJva2Utd2lkdGg9IjE0Ii8+CjxjaXJjbGUgY3g9IjI1MCIgY3k9IjI1MCIgcj0iMTY2IiBmaWxsPSJub25lIiBzdHJva2U9IiM4ZWU4ZmYiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWRhc2hhcnJheT0iMTQgMTgiLz4KPHBhdGggZD0iTTI1MCA5MiBMMjg4IDIwMiBMNDA2IDIwMiBMMzEwIDI3MCBMMzQ2IDM4NSBMMjUwIDMxNiBMMTU0IDM4NSBMMTkwIDI3MCBMOTQgMjAyIEwyMTIgMjAyWiIgZmlsbD0iI2QzYjQ1ZiIgb3BhY2l0eT0iLjkyIi8+CjxjaXJjbGUgY3g9IjI1MCIgY3k9IjI1MCIgcj0iNzIiIGZpbGw9IiMyMDE2MmEiIHN0cm9rZT0iI2ZmZjBhOCIgc3Ryb2tlLXdpZHRoPSI1Ii8+Cjwvc3ZnPgo=" alt="">
-    <div class="eyebrow">Afterlife Personality Division</div>
-    <h1 id="introTitle">PSYCHE<br>KITCHEN</h1>
-    <p id="introText">You died with a spoon in your hand. That was apparently enough experience to get hired.</p>
-    <button id="introBtn" class="bigstart">CONTINUE ✦</button>
-  </div>
-</div>
-
+<div class="toast" id="toast"></div>
 <div class="app">
-  <div class="topbar">
-    <div class="brand"><img src="data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiPgo8Y2lyY2xlIGN4PSIyNTAiIGN5PSIyNTAiIHI9IjIyMCIgZmlsbD0iIzE1MTUyMiIgc3Ryb2tlPSIjZTdjOTc5IiBzdHJva2Utd2lkdGg9IjE0Ii8+CjxjaXJjbGUgY3g9IjI1MCIgY3k9IjI1MCIgcj0iMTY2IiBmaWxsPSJub25lIiBzdHJva2U9IiM4ZWU4ZmYiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWRhc2hhcnJheT0iMTQgMTgiLz4KPHBhdGggZD0iTTI1MCA5MiBMMjg4IDIwMiBMNDA2IDIwMiBMMzEwIDI3MCBMMzQ2IDM4NSBMMjUwIDMxNiBMMTU0IDM4NSBMMTkwIDI3MCBMOTQgMjAyIEwyMTIgMjAyWiIgZmlsbD0iI2QzYjQ1ZiIgb3BhY2l0eT0iLjkyIi8+CjxjaXJjbGUgY3g9IjI1MCIgY3k9IjI1MCIgcj0iNzIiIGZpbGw9IiMyMDE2MmEiIHN0cm9rZT0iI2ZmZjBhOCIgc3Ryb2tlLXdpZHRoPSI1Ii8+Cjwvc3ZnPgo=" alt=""> DIVINE RANGE 7</div>
+  <section class="hero">
+    <h1>🍳 Alchemy Kitchen</h1>
+    <p class="subtitle">Cook with real ingredients and recognizable recipes. Follow recipes for dependable meals—or experiment with flavors, methods, and pantry items to discover your own combinations.</p>
     <div class="stats">
-      <div class="pill">Favor <b id="favor">0</b></div>
-      <div class="pill">Shift <b id="shift">1</b></div>
-    </div>
-  </div>
-
-  
-<div class="area-nav" id="areaNav">
- <button data-area="range" class="active">THE RANGE</button>
- <button data-area="orders">DIVINE ORDERS</button>
- <button data-area="pantry">PANTRY</button>
- <button data-area="psyche">PSYCHE LAB</button>
- <button data-area="astral">ASTRAL CLOCK</button>
- <button data-area="vault">CHARACTER VAULT</button>
- <button data-area="experiment">EXPERIMENT</button><button data-area="below">THE BELOW</button>
-</div>
-<div id="area-range" class="area-screen active">
-<section class="order card">
-    <div class="eyebrow">Current Recipe Challenge</div>
-    <h2 id="orderName">Ambrosial Ember Bread</h2>
-    <p id="orderDesc">The Gatekeeper wants warmth, sweetness, and a little smoke. Choose 3 ingredients, wake the range, then serve at the sacred moment.</p>
-    <div class="progress"><i id="orderProgress"></i></div>
-  </section>
-
-  <section class="altar card">
-    <div class="oven-title"><b>THE ETERNAL RANGE</b><span class="temp"><span id="temp">120</span>°</span></div>
-    <div class="oven-wrap">
-      <div id="heatGlow" class="heat-glow"></div>
-      <img class="oven-img" src="data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9Ijg1MCIgdmlld0JveD0iMCAwIDkwMCA4NTAiPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJtIiB4MT0iMCIgeDI9IjEiPgo8c3RvcCBzdG9wLWNvbG9yPSIjNDAzYTQ2Ii8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iIzE2MTYxZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzU1NTA1YiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmFkaWFsR3JhZGllbnQgaWQ9ImYiPgo8c3RvcCBzdG9wLWNvbG9yPSIjZmZkMjc3Ii8+PHN0b3Agb2Zmc2V0PSIuMzUiIHN0b3AtY29sb3I9IiNmZjc0M2EiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMzNjBiMDgiLz4KPC9yYWRpYWxHcmFkaWVudD4KPC9kZWZzPgo8cmVjdCB4PSI5MCIgeT0iNDAiIHdpZHRoPSI3MjAiIGhlaWdodD0iNzcwIiByeD0iNjAiIGZpbGw9InVybCgjbSkiIHN0cm9rZT0iIzliOGZhNiIgc3Ryb2tlLXdpZHRoPSI4Ii8+CjxyZWN0IHg9IjE0NSIgeT0iMTMwIiB3aWR0aD0iNjEwIiBoZWlnaHQ9IjEyNSIgcng9IjI0IiBmaWxsPSIjMGQwZjE0IiBzdHJva2U9IiM3YTcwN2QiIHN0cm9rZS13aWR0aD0iNSIvPgo8Y2lyY2xlIGN4PSIyMjAiIGN5PSIxOTEiIHI9IjM0IiBmaWxsPSIjMTExIiBzdHJva2U9IiNiN2E5YmYiIHN0cm9rZS13aWR0aD0iNCIvPgo8Y2lyY2xlIGN4PSIzNDAiIGN5PSIxOTEiIHI9IjM0IiBmaWxsPSIjMTExIiBzdHJva2U9IiNiN2E5YmYiIHN0cm9rZS13aWR0aD0iNCIvPgo8Y2lyY2xlIGN4PSI1NjAiIGN5PSIxOTEiIHI9IjM0IiBmaWxsPSIjMTExIiBzdHJva2U9IiNiN2E5YmYiIHN0cm9rZS13aWR0aD0iNCIvPgo8Y2lyY2xlIGN4PSI2ODAiIGN5PSIxOTEiIHI9IjM0IiBmaWxsPSIjMTExIiBzdHJva2U9IiNiN2E5YmYiIHN0cm9rZS13aWR0aD0iNCIvPgo8cmVjdCB4PSIyMTIiIHk9IjI5MCIgd2lkdGg9IjQ3NiIgaGVpZ2h0PSI0MTAiIHJ4PSIzNCIgZmlsbD0iIzA4MDkwZSIgc3Ryb2tlPSIjOGY4NDk1IiBzdHJva2Utd2lkdGg9IjgiLz4KPHJlY3QgeD0iMjQ4IiB5PSIzMzUiIHdpZHRoPSI0MDQiIGhlaWdodD0iMzAwIiByeD0iMjAiIGZpbGw9InVybCgjZikiIG9wYWNpdHk9Ii45NiIvPgo8cGF0aCBkPSJNMjcwIDU3NyBDMzYwIDQ4MCA0MzAgNjAwIDUwMiA0OTUgUzYxMCA1MTAgNjM4IDQwNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZkNzk2IiBzdHJva2Utd2lkdGg9IjEzIiBvcGFjaXR5PSIuOCIvPgo8cmVjdCB4PSIyMzgiIHk9IjI3OCIgd2lkdGg9IjQyNSIgaGVpZ2h0PSIyNiIgcng9IjEzIiBmaWxsPSIjYjRhOGJhIi8+CjxjaXJjbGUgY3g9IjQ1MCIgY3k9IjE5MiIgcj0iMTMiIGZpbGw9IiNmZmQ5NzQiLz4KPC9zdmc+Cg==" alt="Celestial oven">
-    </div>
-
-    <div class="burners">
-      <button class="burner" data-burner="0">EMBER I</button>
-      <button class="burner" data-burner="1">EMBER II</button>
-      <button class="burner" data-burner="2">EMBER III</button>
-      <button class="burner" data-burner="3">EMBER IV</button>
-    </div>
-
-    <div class="controls">
-      <button id="heatDown" class="ctrl">− HEAT</button>
-      <button id="cookBtn" class="ctrl primary">START COOKING</button>
-      <button id="heatUp" class="ctrl">+ HEAT</button>
-    </div>
-
-    <div class="meterbox">
-      <div class="meterlabel"><span>FROZEN</span><b id="cookState">WAITING</b><span>ASH</span></div>
-      <div class="doneness"><i id="needle" class="needle"></i></div>
+      <div class="stat"><span>Coins</span><b id="coins">120</b></div>
+      <div class="stat"><span>Meals</span><b id="meals">0</b></div>
+      <div class="stat"><span>Level</span><b id="level">1</b></div>
+      <div class="stat"><span>Stars</span><b id="stars">0</b></div>
     </div>
   </section>
 
-  
-<section class="psyche-panel">
- <div class="psyche-head"><h3>PSYCHE READOUT</h3><small id="archetype">Archetype: Persona</small></div>
- <div class="zodiac-strip" id="zodiacStrip"></div>
- <div class="shadowmsg" id="shadowMsg">The kitchen is profiling the choices you make, not diagnosing you. Every recipe pushes the fictional cook toward a different archetype.</div>
- <div class="traits" id="traits"></div>
-</section>
-<div class="section-title"><h3>Recovered Characters</h3><span>unlock through cooking</span></div>
-<section class="character-grid" id="characters"></section>
-<div class="section-title"><h3>Ingredient Pantry</h3><span>Pick the 3 that belong</span></div>
-  <section id="ingredients" class="ingredients"></section>
+  <nav class="nav">
+    <button class="active" data-tab="cook">🔥 Cook</button>
+    <button data-tab="pantry">🥕 Pantry</button>
+    <button data-tab="recipes">📖 Recipes</button>
+    <button data-tab="shop">🛒 Market</button>
+    <button data-tab="help">💡 Help</button>
+  </nav>
 
-  <section class="log card" id="log"><b>Oracle:</b> The range is cold. Pick three offerings, then light at least one ember.</section>
+  <section id="cook" class="panel active">
+    <div class="section-title">
+      <h2>Kitchen Station</h2>
+      <span class="tip">Pick 2–6 ingredients, choose a method, then cook.</span>
+    </div>
+    <div class="kitchen-stage">
+      <div class="appliance">
+        <h2 id="methodTitle">Stovetop</h2>
+        <p class="tip">Your selected ingredients appear in the pot.</p>
+        <div class="slotbox" id="selectedSlots"></div>
+        <div class="pot" id="pot">🥘</div>
+      </div>
+      <div>
+        <h3>Cooking method</h3>
+        <div class="methodgrid">
+          <button class="smallbtn method activeMethod" data-method="saute">🍳 Sauté</button>
+          <button class="smallbtn method" data-method="boil">♨️ Boil</button>
+          <button class="smallbtn method" data-method="bake">🔥 Bake</button>
+          <button class="smallbtn method" data-method="grill">🥩 Grill</button>
+          <button class="smallbtn method" data-method="mix">🥣 Mix</button>
+          <button class="smallbtn method" data-method="blend">🌀 Blend</button>
+        </div>
+        <div class="controls">
+          <button class="bigbtn" id="clearBtn">Clear</button>
+          <button class="bigbtn primary" id="cookBtn">COOK!</button>
+        </div>
+        <div class="recipebox">
+          <b>Kitchen hint</b>
+          <div id="hintText" class="tip">Try eggs + butter + salt with Sauté.</div>
+        </div>
+      </div>
+    </div>
+    <div class="resultbox" id="resultBox">
+      <b>Chef's board</b>
+      <p class="tip">Nothing cooking yet.</p>
+    </div>
+  </section>
+
+  <section id="pantry" class="panel">
+    <div class="section-title"><h2>Your Pantry</h2><span class="tip">Tap ingredients to add them to the cooking station.</span></div>
+    <input id="pantrySearch" class="search" placeholder="Search ingredients..." />
+    <div class="grid" id="pantryGrid"></div>
+  </section>
+
+  <section id="recipes" class="panel">
+    <div class="section-title"><h2>Recipe Book</h2><span class="tip">Real-world inspired, simplified home-cooking recipes.</span></div>
+    <input id="recipeSearch" class="search" placeholder="Search recipes..." />
+    <div class="recipe-list" id="recipeList"></div>
+  </section>
+
+  <section id="shop" class="panel">
+    <div class="section-title"><h2>Market</h2><span class="tip">Restock ingredients with coins earned by cooking.</span></div>
+    <div class="grid" id="shopGrid"></div>
+  </section>
+
+  <section id="help" class="panel">
+    <div class="section-title"><h2>How to Play</h2></div>
+    <div class="recipe">
+      <h3>1. Pick ingredients</h3>
+      <p>Open Pantry and tap ingredients. Each item has a quantity. Selected ingredients are moved to the Kitchen Station.</p>
+    </div>
+    <div class="recipe">
+      <h3>2. Pick the right cooking method</h3>
+      <p>Recipes care about method. Eggs can become scrambled eggs when sautéed, but boiling them produces a different result.</p>
+    </div>
+    <div class="recipe">
+      <h3>3. Follow recipes—or experiment</h3>
+      <p>Exact or near-exact combinations score higher. Experiments still produce a dish and are rated for flavor balance using ingredient categories.</p>
+    </div>
+    <div class="recipe">
+      <h3>4. Flavor logic</h3>
+      <p>Salt enhances savory foods, fats add richness, acids brighten dishes, aromatics add depth, and excessive conflicting ingredients lower the score.</p>
+    </div>
+    <div class="recipe">
+      <h3>5. No fake medical or nutrition claims</h3>
+      <p>This is a cooking game, not health advice. Food safety matters in real kitchens: cook meats and eggs safely, avoid cross-contamination, and follow reliable food-safety guidance.</p>
+    </div>
+  </section>
 </div>
 
-<div id="area-orders" class="area-screen">
- <section class="card order"><div class="eyebrow">DIVINE ORDERS</div><h2>Recipe Case Files</h2><p>The kitchen disguises memory tests as familiar food. Each completed recipe leaves a psychological residue.</p><div id="ordersArea"></div></section>
-</div>
-
-<div id="area-pantry" class="area-screen">
- <section class="card order"><div class="eyebrow">PANTRY</div><h2>Ingredient Archive</h2><p>Every ingredient carries a fictional symbolic association used by the thriller system.</p><div id="pantryArea" class="ingredients"></div></section>
-</div>
-
-<div id="area-psyche" class="area-screen">
- <section class="psyche-panel"><div class="eyebrow">PSYCHE LAB</div><h2>Behavioral Simulation</h2><p style="font-size:11px;color:#aaa5b4">These are fictional gameplay variables, not psychiatric assessment results.</p><div id="deepPsych" class="psychiatric-grid"></div></section>
-</div>
-
-<div id="area-astral" class="area-screen">
- <section class="psyche-panel"><div class="eyebrow">ASTRAL CLOCK</div><h2 id="astralTitle">Cycle Forecast</h2><div class="zodiac-strip"></div><div id="astralInfo" class="astral-grid"></div><h3>Biorhythm Chamber</h3><div id="rhythms" class="astral-grid"></div></section>
-</div>
-
-<div id="area-vault" class="area-screen">
- <section class="psyche-panel"><div class="eyebrow">CHARACTER VAULT</div><h2>Recovered Personalities</h2><p style="font-size:11px;color:#aaa5b4">Characters are rewards assembled from your fictional cooking profile.</p><div class="character-grid" id="vaultCharacters"></div></section>
-</div>
-
-
-<div id="area-experiment" class="area-screen">
- <section class="psyche-panel">
-  <div class="eyebrow">EXPERIMENTAL KITCHEN</div>
-  <h2>Procedural Recipe Engine</h2>
-  <p style="font-size:11px;color:#aaa5b4">Ignore the order and combine any three pantry items. Heat, burner, ingredient chemistry, timing, zodiac state, and fictional psyche variables are folded into a generated dish.</p>
-  <div id="formulaExplain" class="formula-box"></div>
-  <div id="discoveries"></div>
- </section>
-</div>
-<div id="area-below" class="area-screen">
- <section class="below"><div id="belowLock" class="lockmark">⌁</div><div class="eyebrow">THE BELOW</div><h2 id="belowTitle">SEALED</h2><p id="belowText">The hatch beneath the Eternal Range has no handle. Eight recovered personalities appear to form its key.</p><button id="belowBtn" class="ctrl primary">LISTEN AT THE HATCH</button></section>
-</div>
-
-</div>
-
-<div class="bottom">
-  <button id="ordersBtn">CASE FILES</button>
-  <button id="loreBtn">PSYCHE FILE</button>
-  <button id="resetBtn">NEW SOUL</button>
-</div>
-
-<div id="modal" class="modal hidden">
-  <div class="sheet">
-    <div id="modalBody"></div>
-    <button class="close" id="closeModal">CLOSE</button>
+<div class="footerbar">
+  <div>
+    <button class="bigbtn" onclick="showTab('pantry')">+ Ingredients</button>
+    <button class="bigbtn primary" onclick="showTab('cook')">🔥 Kitchen</button>
   </div>
 </div>
-
 
 <script>
-(() => {
-  const $ = s => document.querySelector(s);
-  const $$ = s => [...document.querySelectorAll(s)];
+const ING = {
+  egg:{name:"Eggs",emoji:"🥚",cat:"protein",qty:6,cost:5},
+  butter:{name:"Butter",emoji:"🧈",cat:"fat",qty:4,cost:4},
+  salt:{name:"Salt",emoji:"🧂",cat:"seasoning",qty:12,cost:2},
+  pepper:{name:"Black Pepper",emoji:"⚫",cat:"seasoning",qty:10,cost:2},
+  bread:{name:"Bread",emoji:"🍞",cat:"grain",qty:6,cost:4},
+  cheese:{name:"Cheese",emoji:"🧀",cat:"dairy",qty:5,cost:6},
+  tomato:{name:"Tomato",emoji:"🍅",cat:"vegetable",qty:5,cost:4},
+  onion:{name:"Onion",emoji:"🧅",cat:"aromatic",qty:5,cost:3},
+  garlic:{name:"Garlic",emoji:"🧄",cat:"aromatic",qty:8,cost:3},
+  pasta:{name:"Pasta",emoji:"🍝",cat:"grain",qty:5,cost:5},
+  oliveoil:{name:"Olive Oil",emoji:"🫒",cat:"fat",qty:8,cost:5},
+  chicken:{name:"Chicken",emoji:"🍗",cat:"protein",qty:3,cost:9},
+  beef:{name:"Ground Beef",emoji:"🥩",cat:"protein",qty:3,cost:10},
+  potato:{name:"Potato",emoji:"🥔",cat:"vegetable",qty:5,cost:4},
+  carrot:{name:"Carrot",emoji:"🥕",cat:"vegetable",qty:5,cost:3},
+  celery:{name:"Celery",emoji:"🌿",cat:"vegetable",qty:4,cost:3},
+  rice:{name:"Rice",emoji:"🍚",cat:"grain",qty:6,cost:4},
+  beans:{name:"Beans",emoji:"🫘",cat:"protein",qty:5,cost:4},
+  milk:{name:"Milk",emoji:"🥛",cat:"dairy",qty:5,cost:4},
+  flour:{name:"Flour",emoji:"🌾",cat:"grain",qty:7,cost:3},
+  sugar:{name:"Sugar",emoji:"🍬",cat:"sweet",qty:7,cost:3},
+  banana:{name:"Banana",emoji:"🍌",cat:"fruit",qty:5,cost:3},
+  strawberry:{name:"Strawberries",emoji:"🍓",cat:"fruit",qty:4,cost:5},
+  yogurt:{name:"Yogurt",emoji:"🥣",cat:"dairy",qty:4,cost:5},
+  lemon:{name:"Lemon",emoji:"🍋",cat:"acid",qty:4,cost:4},
+  basil:{name:"Basil",emoji:"🌿",cat:"herb",qty:5,cost:3},
+  mushroom:{name:"Mushrooms",emoji:"🍄",cat:"vegetable",qty:5,cost:5},
+  spinach:{name:"Spinach",emoji:"🥬",cat:"vegetable",qty:5,cost:4},
+  bacon:{name:"Bacon",emoji:"🥓",cat:"protein",qty:3,cost:8},
+  broth:{name:"Broth",emoji:"🍲",cat:"liquid",qty:5,cost:4}
+};
 
-  const ingredients = [
-    {n:"Eggs",i:"🥚",t:"eggs"},
-    {n:"Bread",i:"🍞",t:"bread"},
-    {n:"Butter",i:"🧈",t:"butter"},
-    {n:"Cheese",i:"🧀",t:"cheese"},
-    {n:"Milk",i:"🥛",t:"milk"},
-    {n:"Flour",i:"🌾",t:"flour"},
-    {n:"Tomato",i:"🍅",t:"tomato"},
-    {n:"Pasta",i:"🍝",t:"pasta"},
-    {n:"Garlic",i:"🧄",t:"garlic"},
-    {n:"Potato",i:"🥔",t:"potato"},
-    {n:"Rice",i:"🍚",t:"rice"},
-    {n:"Chicken",i:"🍗",t:"chicken"},
-    {n:"Onion",i:"🧅",t:"onion"},
-    {n:"Apple",i:"🍎",t:"apple"},
-    {n:"Sugar",i:"🍬",t:"sugar"},
-    {n:"Cinnamon",i:"🟤",t:"cinnamon"},
-    {n:"Oil",i:"🫗",t:"oil"},
-    {n:"Herbs",i:"🌿",t:"herbs"}
-  ];
+const RECIPES = [
+  {name:"Scrambled Eggs",emoji:"🍳",method:"saute",ings:["egg","butter","salt"],optional:["pepper","cheese"],desc:"Soft scrambled eggs cooked gently with butter.",steps:["Beat eggs with a pinch of salt.","Melt butter over low-medium heat.","Cook eggs gently, stirring until softly set."]},
+  {name:"Grilled Cheese",emoji:"🥪",method:"grill",ings:["bread","cheese","butter"],optional:["tomato"],desc:"Golden toasted bread with melted cheese.",steps:["Butter the bread.","Place cheese between slices.","Cook on a skillet until both sides are golden and cheese melts."]},
+  {name:"Tomato Pasta",emoji:"🍝",method:"boil",ings:["pasta","tomato","garlic","oliveoil","salt"],optional:["basil","cheese","onion"],desc:"Simple tomato-garlic pasta.",steps:["Boil pasta in salted water.","Cook garlic and tomato in olive oil.","Toss pasta with sauce and season."]},
+  {name:"Chicken Rice Bowl",emoji:"🍚",method:"saute",ings:["chicken","rice","onion","oliveoil","salt"],optional:["pepper","spinach","lemon"],desc:"Savory chicken and rice bowl.",steps:["Cook rice separately.","Sauté chicken and onion until cooked through.","Combine with rice and season."]},
+  {name:"Vegetable Soup",emoji:"🍲",method:"boil",ings:["broth","carrot","celery","onion","potato","salt"],optional:["beans","spinach","garlic","pepper"],desc:"Simple vegetable soup.",steps:["Chop vegetables.","Simmer in broth until tender.","Season to taste."]},
+  {name:"Cheese Omelet",emoji:"🍳",method:"saute",ings:["egg","cheese","butter","salt"],optional:["mushroom","spinach","onion","pepper"],desc:"Folded cheese omelet.",steps:["Beat eggs.","Cook in butter until nearly set.","Add cheese, fold, and finish gently."]},
+  {name:"Baked Potato",emoji:"🥔",method:"bake",ings:["potato","oliveoil","salt"],optional:["butter","cheese","pepper"],desc:"Crisp-skinned baked potato.",steps:["Rub potato with oil and salt.","Bake until tender inside.","Split and add toppings."]},
+  {name:"Banana Pancakes",emoji:"🥞",method:"saute",ings:["banana","egg","flour","milk","butter"],optional:["sugar"],desc:"Simple banana pancakes.",steps:["Mash banana and mix batter.","Melt a little butter in a pan.","Cook pancakes until browned on both sides."]},
+  {name:"Berry Smoothie",emoji:"🥤",method:"blend",ings:["strawberry","banana","yogurt","milk"],optional:["sugar","lemon"],desc:"Creamy fruit smoothie.",steps:["Add fruit and dairy to blender.","Blend until smooth.","Adjust sweetness to taste."]},
+  {name:"Caprese Salad",emoji:"🥗",method:"mix",ings:["tomato","cheese","basil","oliveoil","salt"],optional:["pepper"],desc:"Tomato, cheese, basil and olive oil.",steps:["Slice tomato and cheese.","Layer with basil.","Drizzle with oil and season."]},
+  {name:"Garlic Mushrooms",emoji:"🍄",method:"saute",ings:["mushroom","garlic","butter","salt"],optional:["pepper","lemon","basil"],desc:"Buttery sautéed mushrooms with garlic.",steps:["Melt butter.","Cook mushrooms until browned.","Add garlic near the end and season."]},
+  {name:"Beans and Rice",emoji:"🫘",method:"saute",ings:["beans","rice","onion","garlic","oliveoil","salt"],optional:["tomato","pepper"],desc:"A basic savory beans-and-rice dish.",steps:["Cook rice.","Sauté onion and garlic.","Add beans, then serve over rice."]},
+  {name:"Bacon Egg Toast",emoji:"🍞",method:"saute",ings:["bacon","egg","bread"],optional:["cheese","pepper","butter"],desc:"Breakfast toast with bacon and egg.",steps:["Cook bacon thoroughly.","Cook egg to preference.","Toast bread and assemble."]},
+  {name:"Spinach Pasta",emoji:"🥬",method:"boil",ings:["pasta","spinach","garlic","oliveoil","salt"],optional:["cheese","lemon","pepper"],desc:"Quick spinach-garlic pasta.",steps:["Boil pasta.","Wilt spinach with garlic in olive oil.","Toss together and season."]},
+  {name:"Simple Bread Dough",emoji:"🥖",method:"bake",ings:["flour","salt"],optional:[],desc:"A simplified game recipe. Real bread also requires water and normally yeast or another leavening method.",steps:["Combine flour, water and salt; add yeast for conventional bread.","Knead and allow dough to rise.","Bake until fully cooked."]}
+];
 
-  const recipes = [
-    {
-      name:"Golden Grilled Cheese",
-      subtitle:"A real kitchen classic, offered to a sun god.",
-      need:["bread","cheese","butter"],
-      burner:1,
-      heat:[250,360],
-      tip:"Bread + cheese + butter. Medium heat gives the crust time to brown before the cheese burns.",
-      icon:"🥪"
-    },
-    {
-      name:"Temple Scrambled Eggs",
-      subtitle:"Soft eggs for the keepers of dawn.",
-      need:["eggs","butter","milk"],
-      burner:0,
-      heat:[180,300],
-      tip:"Eggs + butter + a little milk. Lower heat gives softer curds.",
-      icon:"🍳"
-    },
-    {
-      name:"Oracle Tomato Pasta",
-      subtitle:"A simple red sauce for the halls beyond time.",
-      need:["pasta","tomato","garlic"],
-      burner:2,
-      heat:[280,420],
-      tip:"Pasta + tomato + garlic. The sauce wants a steady simmer, not a violent boil.",
-      icon:"🍝"
-    },
-    {
-      name:"Afterlife Roasted Potatoes",
-      subtitle:"Crisp edges, soft middle, eternal approval.",
-      need:["potato","oil","herbs"],
-      burner:3,
-      heat:[340,460],
-      tip:"Potatoes + oil + herbs. Hotter cooking helps the outside brown.",
-      icon:"🥔"
-    },
-    {
-      name:"Pilgrim Rice Bowl",
-      subtitle:"A humble meal for souls crossing the long bridge.",
-      need:["rice","chicken","onion"],
-      burner:2,
-      heat:[260,390],
-      tip:"Rice + chicken + onion. Cook steadily and do not rush the center.",
-      icon:"🍚"
-    },
-    {
-      name:"Celestial Apple Toast",
-      subtitle:"Sweet, warm, and simple enough for mortal kitchens.",
-      need:["bread","apple","cinnamon"],
-      burner:1,
-      heat:[220,340],
-      tip:"Bread + apple + cinnamon. Gentle heat keeps the fruit sweet instead of scorched.",
-      icon:"🍎"
-    },
-    {
-      name:"Moonlight Pancake",
-      subtitle:"Breakfast requested by a god who has never seen morning.",
-      need:["flour","eggs","milk"],
-      burner:0,
-      heat:[240,340],
-      tip:"Flour + eggs + milk. Medium heat lets the middle set while the surface browns.",
-      icon:"🥞"
-    },
-    {
-      name:"Divine Cheese Omelet",
-      subtitle:"Folded at the exact moment the heavens go quiet.",
-      need:["eggs","cheese","butter"],
-      burner:0,
-      heat:[190,300],
-      tip:"Eggs + cheese + butter. Keep it gentle so the eggs stay tender.",
-      icon:"🍳"
-    },
-    {
-      name:"Gatekeeper Garlic Toast",
-      subtitle:"The aroma opens doors that keys cannot.",
-      need:["bread","butter","garlic"],
-      burner:1,
-      heat:[250,360],
-      tip:"Bread + butter + garlic. Toast until fragrant and golden, not black.",
-      icon:"🥖"
-    },
-    {
-      name:"Starlit Apple Cake",
-      subtitle:"A tiny cake for a constellation that learned to eat.",
-      need:["flour","apple","sugar"],
-      burner:3,
-      heat:[320,430],
-      tip:"Flour + apple + sugar. Baking needs stable heat more than speed.",
-      icon:"🍰"
-    }
-  ];
+let state = JSON.parse(localStorage.getItem("alchemyKitchenSave") || "null") || {
+  coins:120, meals:0, stars:0, selected:[], method:"saute", inventory:{}
+};
+for (const k in ING) if(state.inventory[k] == null) state.inventory[k]=ING[k].qty;
 
-  let recipeIndex = 0;
-  let favor = 0;
-  let psyche={openness:48,discipline:46,sociability:40,empathy:52,reactivity:44,shadow:18};
-  let clinical={affect:52,arousal:41,inhibition:55,salience:38,cognitiveLoad:31,rumination:20,vigilance:35,impulse:43,attachment:48,executiveControl:54,emotionalRegulation:50,realityTesting:72,dissociation:12};
-  const signData=[
-    ["Aries","Fire","Cardinal","Mars","identity","scarlet"],
-    ["Taurus","Earth","Fixed","Venus","stability","amber"],
-    ["Gemini","Air","Mutable","Mercury","duality","yellow"],
-    ["Cancer","Water","Cardinal","Moon","memory","silver-blue"],
-    ["Leo","Fire","Fixed","Sun","persona","gold"],
-    ["Virgo","Earth","Mutable","Mercury","precision","green"],
-    ["Libra","Air","Cardinal","Venus","balance","rose"],
-    ["Scorpio","Water","Fixed","Mars/Pluto","shadow","violet"],
-    ["Sagittarius","Fire","Mutable","Jupiter","seeking","indigo"],
-    ["Capricorn","Earth","Cardinal","Saturn","control","stone"],
-    ["Aquarius","Air","Fixed","Saturn/Uranus","distance","cyan"],
-    ["Pisces","Water","Mutable","Jupiter/Neptune","dream","blue-violet"]
-  ];
-  const houses=["Self","Resources","Messages","Roots","Creation","Ritual","Others","Transformation","Meaning","Authority","Community","Unconscious"];
-  const rhythmDefs=[["Physical",23],["Emotional",28],["Intellectual",33],["Intuition",38],["Shadow",41],["Dream",47]];
-  const chemistry={
-    eggs:{protein:8,fat:5,starch:0,sweet:0,water:5,aroma:2},
-    bread:{protein:3,fat:1,starch:9,sweet:1,water:2,aroma:3},
-    butter:{protein:0,fat:10,starch:0,sweet:0,water:1,aroma:5},
-    cheese:{protein:8,fat:8,starch:0,sweet:0,water:3,aroma:7},
-    milk:{protein:4,fat:3,starch:0,sweet:3,water:9,aroma:2},
-    flour:{protein:3,fat:0,starch:10,sweet:0,water:0,aroma:1},
-    tomato:{protein:1,fat:0,starch:1,sweet:3,water:9,aroma:6},
-    pasta:{protein:3,fat:0,starch:10,sweet:0,water:1,aroma:1},
-    garlic:{protein:1,fat:0,starch:1,sweet:0,water:3,aroma:10},
-    potato:{protein:2,fat:0,starch:9,sweet:1,water:6,aroma:2},
-    rice:{protein:2,fat:0,starch:10,sweet:0,water:1,aroma:1},
-    chicken:{protein:10,fat:4,starch:0,sweet:0,water:5,aroma:5},
-    onion:{protein:1,fat:0,starch:2,sweet:4,water:8,aroma:8},
-    apple:{protein:0,fat:0,starch:2,sweet:8,water:8,aroma:6},
-    sugar:{protein:0,fat:0,starch:0,sweet:10,water:0,aroma:1},
-    cinnamon:{protein:0,fat:0,starch:0,sweet:2,water:0,aroma:10},
-    oil:{protein:0,fat:10,starch:0,sweet:0,water:0,aroma:2},
-    herbs:{protein:0,fat:0,starch:0,sweet:0,water:2,aroma:10}
-  };
-  const prefixes=["Whispering","Midnight","Astral","Broken","Golden","Oracle","Shadow","Dreaming","Mirror","Electric","Forgotten","Celestial","Impossible","Quiet","Scarlet","Lunar"];
-  const forms=["Hash","Custard","Skillet","Toast","Cake","Mash","Scramble","Bake","Pilaf","Melt","Pudding","Crisp","Stack","Stew","Fold","Offering"];
-  let discoveries=[];
+function save(){ localStorage.setItem("alchemyKitchenSave",JSON.stringify(state)); }
+function toast(msg){ const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show"); setTimeout(()=>t.classList.remove("show"),1300); }
+function showTab(id){
+  document.querySelectorAll(".panel").forEach(x=>x.classList.toggle("active",x.id===id));
+  document.querySelectorAll(".nav button").forEach(x=>x.classList.toggle("active",x.dataset.tab===id));
+  if(id==="pantry") renderPantry();
+  if(id==="shop") renderShop();
+  if(id==="recipes") renderRecipes();
+}
+document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
 
-
-  let unlocked=0;
-  const zodiac=[
-    {s:"Aries",c:"#ff5b5b",m:"impulse"},
-    {s:"Taurus",c:"#e7b55b",m:"stability"},
-    {s:"Gemini",c:"#ffe66d",m:"duality"},
-    {s:"Cancer",c:"#78d7e8",m:"memory"},
-    {s:"Leo",c:"#ff9f43",m:"identity"},
-    {s:"Virgo",c:"#7bd88f",m:"precision"},
-    {s:"Libra",c:"#ef9bd4",m:"balance"},
-    {s:"Scorpio",c:"#8c5b9e",m:"shadow"},
-    {s:"Sagittarius",c:"#7967d8",m:"seeking"},
-    {s:"Capricorn",c:"#7a8c78",m:"control"},
-    {s:"Aquarius",c:"#54c7ec",m:"distance"},
-    {s:"Pisces",c:"#6574ff",m:"dream"}
-  ];
-  const cast=[
-    ["🜂","The Persona","serves what others expect"],
-    ["◐","The Shadow","keeps the rejected recipe"],
-    ["👁","The Witness","remembers every failed dish"],
-    ["♜","The Architect","rebuilds rules from patterns"],
-    ["☾","The Dreamer","changes recipes in memory"],
-    ["♢","The Double","chooses what you would not"],
-    ["⌛","The Keeper","knows why the oven was waiting"],
-    ["✦","The Self","locked behind integration"]
-  ];
-  const memories=[
-    ["THE PERSONA","The first cook wore your face. It smiled whenever the customer approved, even when you did not."],
-    ["THE SHADOW","Something beneath the range has been saving every ingredient you rejected."],
-    ["THE WITNESS","The kitchen does not punish mistakes. It archives them."],
-    ["THE ARCHITECT","You notice the recipes are beginning to resemble decisions you made before arriving here."],
-    ["THE DREAMER","Tonight the zodiac colors appear in the food. No one else admits seeing them."],
-    ["THE DOUBLE","A second order ticket prints in your handwriting: DO NOT SERVE THE NEXT DISH."],
-    ["THE KEEPER","The oven was already warm when you arrived because another version of you had just left."],
-    ["THE SELF","The final character is not a god. It is the cook with every mask removed."]
-  ];
-
-  let shift = 1;
-  let temp = 260;
-  let selected = [];
-  let burners = [false,false,false,false];
-  let cooking = false;
-  let cookPos = 4;
-  let cookTimer = null;
-  let direction = 1;
-  let introStep = 0;
-  let deliveredRecipe = null;
-
-  function beep(freq=440,dur=.08){
-    try {
-      const A=window.AudioContext||window.webkitAudioContext;
-      const a=new A(), o=a.createOscillator(), g=a.createGain();
-      o.connect(g); g.connect(a.destination); o.frequency.value=freq;
-      g.gain.value=.04; o.start();
-      g.gain.exponentialRampToValueAtTime(.001,a.currentTime+dur);
-      o.stop(a.currentTime+dur);
-    } catch(e){}
-  }
-
-  function toast(msg){
-    const t=$("#toast");
-    t.textContent=msg;
-    t.classList.add("show");
-    setTimeout(()=>t.classList.remove("show"),1700);
-  }
-
-  function currentRecipe(){ return recipes[recipeIndex]; }
-
-  
-  
-  function clamp(v){return Math.max(0,Math.min(100,v))}
-  
-  function hashMix(parts){
-    let h=2166136261;
-    for(const ch of parts.join("|")){h^=ch.charCodeAt(0);h=Math.imul(h,16777619)}
-    return Math.abs(h>>>0);
-  }
-  function analyzeMix(chosen){
-    const totals={protein:0,fat:0,starch:0,sweet:0,water:0,aroma:0};
-    chosen.forEach(t=>Object.keys(totals).forEach(k=>totals[k]+=(chemistry[t]?.[k]||0)));
-    return totals;
-  }
-  function proceduralDish(chosen,activeBurner,timing){
-    const mix=analyzeMix(chosen), seed=hashMix([...chosen].sort().concat([temp,activeBurner,Math.round(timing)]));
-    const z=signData[(recipeIndex+shift+unlocked)%12];
-    const name=`${prefixes[seed%prefixes.length]} ${forms[Math.floor(seed/17)%forms.length]}`;
-    let form="mystery";
-    if(mix.starch>=15 && mix.sweet>=8) form="sweet bake";
-    else if(mix.protein>=14 && mix.fat>=8) form="rich skillet";
-    else if(mix.water>=14 && mix.aroma>=10) form="aromatic stew";
-    else if(mix.starch>=15 && mix.fat>=8) form="crisp";
-    else if(mix.sweet>=10 && mix.water>=8) form="fruit pudding";
-    else if(mix.protein>=10) form="savory scramble";
-    else if(mix.starch>=10) form="pan-fried starch";
-    const thermal=Math.round((temp/500)*35 + (timing/100)*35 + (activeBurner+1)*4);
-    const cohesion=Math.round(clamp((mix.starch*2+mix.protein*1.6+mix.fat-mix.water*.6)+thermal));
-    const flavor=Math.round(clamp(mix.aroma*2+mix.sweet*1.3+mix.fat*.8));
-    const stability=Math.round(clamp(100-Math.abs(55-cohesion)+(clinical.executiveControl-50)*.15));
-    const oddity=Math.round(clamp(psyche.shadow*.35+Math.abs(rhythmValue(41))*0.25+(seed%31)));
-    const quality=Math.round(clamp((cohesion+flavor+stability)/3-oddity*.12));
-    const icon=quality>75?"✨":oddity>65?"🜏":mix.sweet>10?"🍮":mix.protein>12?"🍳":"🥘";
-    const text=`A ${z[0]}-colored ${form}. Cohesion ${cohesion}, flavor ${flavor}, stability ${stability}, anomaly ${oddity}.`;
-    return {name,form,mix,cohesion,flavor,stability,oddity,quality,icon,text,chosen:[...chosen],temp,activeBurner,timing:Math.round(timing)};
-  }
-  function renderFormulaExplain(){
-    $("#formulaExplain").innerHTML=`<h4>LIVE FORMULA MODEL</h4>
-      <div class="formula-row"><span>Cohesion</span><span>starch × 2 + protein × 1.6 + fat − water × .6 + thermal</span></div>
-      <div class="formula-row"><span>Flavor</span><span>aroma × 2 + sweetness × 1.3 + fat × .8</span></div>
-      <div class="formula-row"><span>Stability</span><span>cohesion balance + executive-control modifier</span></div>
-      <div class="formula-row"><span>Anomaly</span><span>Shadow + biorhythm + procedural seed</span></div>
-      <div class="formula-row"><span>Outcome</span><span>ingredients + burner + heat + timing + astral state</span></div>`;
-  }
-  function renderDiscoveries(){
-    const d=$("#discoveries"); if(!d)return;
-    d.innerHTML=discoveries.length?discoveries.slice(-8).reverse().map(x=>`<div class="discovery"><div class="dishicon">${x.icon}</div><h3>${x.name}</h3><p>${x.text}</p><small>${x.chosen.map(t=>ingredients.find(i=>i.t===t)?.n||t).join(" + ")} · ${x.temp}° · Burner ${x.activeBurner+1}</small></div>`).join(""):`<div class="discovery"><h3>No anomalies cooked yet.</h3><p>On THE RANGE, deliberately choose ingredients that do not match the current order. The oven will generate something instead of simply rejecting them.</p></div>`;
-  }
-
-  function renderAreas(){
-    $("#ordersArea").innerHTML=recipes.map((r,i)=>`<div class="astral-card" style="margin-top:8px"><b>${r.icon} ${r.name}</b><p>${r.tip}</p></div>`).join("");
-    const symbols={eggs:"potential",bread:"security",butter:"comfort",cheese:"reward",milk:"nurture",flour:"possibility",tomato:"affect",pasta:"continuity",garlic:"defense",potato:"grounding",rice:"order",chicken:"drive",onion:"layers",apple:"knowledge",sugar:"reward",cinnamon:"memory",oil:"adaptation",herbs:"intuition"};
-    $("#pantryArea").innerHTML=ingredients.map(x=>`<div class="ing"><span class="icon">${x.i}</span><b>${x.n}</b><small>${symbols[x.t]||"association"}</small></div>`).join("");
-    renderDeepPsych(); renderAstral(); renderVault(); renderFormulaExplain(); renderDiscoveries();
-  }
-  function renderDeepPsych(){
-    const pretty={affect:"Affect",arousal:"Arousal",inhibition:"Inhibition",salience:"Salience",cognitiveLoad:"Cognitive Load",rumination:"Rumination",vigilance:"Vigilance",impulse:"Impulse",attachment:"Attachment",executiveControl:"Executive Control",emotionalRegulation:"Emotional Regulation",realityTesting:"Reality Testing",dissociation:"Dissociation"};
-    $("#deepPsych").innerHTML=Object.entries(clinical).map(([k,v])=>`<div class="psychstat"><b><span>${pretty[k]}</span><span>${Math.round(v)}</span></b><em style="width:${clamp(v)}%"></em></div>`).join("");
-  }
-  function rhythmValue(period, offset=0){
-    const day=(shift*3+recipeIndex+offset);
-    return Math.round(Math.sin((2*Math.PI*day)/period)*100);
-  }
-  function renderAstral(){
-    const z=signData[(recipeIndex+shift+unlocked)%12], house=houses[(recipeIndex+shift*2)%12];
-    $("#astralTitle").textContent=`${z[0]} · House of ${house}`;
-    $("#astralInfo").innerHTML=`
-      <div class="astral-card"><b>Sign</b><p>${z[0]} · ${z[1]} · ${z[2]}</p></div>
-      <div class="astral-card"><b>Planetary Symbol</b><p>${z[3]} · fictional influence: ${z[4]}</p></div>
-      <div class="astral-card"><b>Chromatic Omen</b><p>${z[5]} enters the kitchen rainbow.</p></div>
-      <div class="astral-card"><b>House</b><p>${house}: changes the story flavor of this shift.</p></div>`;
-    $("#rhythms").innerHTML=rhythmDefs.map((r,i)=>{
-      const v=rhythmValue(r[1],i*2), angle=v/100*18;
-      return `<div class="astral-card"><b>${r[0]} ${v>0?"+":""}${v}</b><div class="wave"><i style="transform:rotate(${angle}deg)"></i></div><p>${v>35?"ascending":v<-35?"descending":"crossing"} fictional cycle</p></div>`;
-    }).join("");
-  }
-  function renderVault(){
-    $("#vaultCharacters").innerHTML=cast.map((c,i)=>`<div class="character ${i<unlocked?"unlocked":"locked"}"><div class="face">${c[0]}</div><b>${c[1]}</b><small>${i<unlocked?c[2]:"PROFILE SEALED"}</small></div>`).join("");
-    if(unlocked>=cast.length){
-      $("#belowTitle").textContent="THE HATCH KNOWS YOU";
-      $("#belowText").textContent="All recovered profiles agree on one impossible fact: THE COOK is not a profile of you. It is a role the kitchen has been constructing from every recipe, hesitation, burn, and perfect delivery.";
-      $("#belowBtn").textContent="OPEN THE BELOW";
-    }
-  }
-  function alterClinical(score,timingPerfect,ingredientPerfect){
-    clinical.arousal=clamp(clinical.arousal+(score<7?6:-2));
-    clinical.cognitiveLoad=clamp(clinical.cognitiveLoad+(ingredientPerfect?-2:5));
-    clinical.rumination=clamp(clinical.rumination+(score<7?5:-1));
-    clinical.vigilance=clamp(clinical.vigilance+(timingPerfect?1:3));
-    clinical.impulse=clamp(clinical.impulse+(timingPerfect?-3:4));
-    clinical.executiveControl=clamp(clinical.executiveControl+(ingredientPerfect&&timingPerfect?4:-1));
-    clinical.emotionalRegulation=clamp(clinical.emotionalRegulation+(score>=10?3:-1));
-    clinical.salience=clamp(clinical.salience+2);
-    clinical.realityTesting=clamp(clinical.realityTesting+(score>=10?1:0));
-    clinical.dissociation=clamp(clinical.dissociation+(psyche.shadow>60?2:0));
-    renderDeepPsych(); renderAstral();
-  }
-
-  function renderPsyche(){
-    const names={openness:"Openness",discipline:"Discipline",sociability:"Sociability",empathy:"Empathy",reactivity:"Reactivity",shadow:"Shadow Pressure"};
-    $("#traits").innerHTML=Object.entries(psyche).map(([k,v])=>`<div class="trait"><b><span>${names[k]}</span><span>${Math.round(v)}</span></b><div class="traitbar"><i style="width:${Math.max(0,Math.min(100,v))}%"></i></div></div>`).join("");
-    const z=zodiac[(recipeIndex+shift+unlocked)%zodiac.length];
-    $("#zodiacStrip").style.boxShadow=`0 0 24px ${z.c}55`;
-    let a=psyche.shadow>62?"Shadow":psyche.openness>65?"Explorer":psyche.discipline>65?"Ruler":psyche.empathy>65?"Caregiver":psyche.reactivity>65?"Trickster":"Persona";
-    $("#archetype").textContent=`Archetype: ${a} · ${z.s} ${z.m}`;
-    document.body.classList.toggle("threat",psyche.shadow>55);
-  }
-  function renderCharacters(){
-    $("#characters").innerHTML=cast.map((c,i)=>`<div class="character ${i<unlocked?"unlocked":"locked"}"><div class="face">${c[0]}</div><b>${c[1]}</b><small>${i<unlocked?c[2]:"UNKNOWN"}</small></div>`).join("");
-  }
-  function alterPsyche(score, ingredientPerfect, timingPerfect){
-    psyche.openness=Math.min(100,psyche.openness+(ingredientPerfect?2:1));
-    psyche.discipline=Math.min(100,Math.max(0,psyche.discipline+(timingPerfect?4:-2)));
-    psyche.empathy=Math.min(100,psyche.empathy+(score>=10?2:0));
-    psyche.reactivity=Math.min(100,Math.max(0,psyche.reactivity+(score<7?5:-1)));
-    psyche.shadow=Math.min(100,Math.max(0,psyche.shadow+(score<7?8:2)));
-    psyche.sociability=Math.min(100,psyche.sociability+(score>=10?1:0));
-    renderPsyche();
-    alterClinical(score,timingPerfect,ingredientPerfect);
-  }
-  function unlockCharacter(){
-    if(unlocked>=cast.length) return;
-    const m=memories[unlocked];
-    unlocked++;
-    renderCharacters();
-    renderVault();
-    $("#memoryTitle").textContent=m[0];
-    $("#memoryText").textContent=m[1];
-    $("#memoryFlash").classList.add("show");
-    beep(190,.25);
-  }
-
-  function renderIngredients(reveal=false){
-    const target = reveal && deliveredRecipe ? deliveredRecipe.need : [];
-    $("#ingredients").innerHTML = ingredients.map((x,idx)=>{
-      const isSel=selected.includes(idx);
-      const isReveal=target.includes(x.t);
-      return `
-        <button class="ing ${isSel?"selected":""}" data-i="${idx}"
-          style="${isReveal ? 'outline:2px solid var(--cyan);box-shadow:0 0 20px rgba(142,232,255,.20)' : ''}">
-          <span class="icon">${x.i}</span>
-          <b>${x.n}</b>
-          <small>${isReveal ? "USED IN DISH" : "ingredient"}</small>
-        </button>`;
-    }).join("");
-    $$(".ing").forEach(b=>b.onclick=()=>selectIngredient(+b.dataset.i));
-  }
-
-  function selectIngredient(i){
-    if(cooking) return toast("The pan is already cooking.");
-    if(deliveredRecipe) return toast("Tap NEXT ORDER after studying the ingredients.");
-    if(selected.includes(i)) selected=selected.filter(x=>x!==i);
-    else if(selected.length<3) selected.push(i);
-    else return toast("This recipe takes exactly three ingredients.");
-
-    beep(selected.includes(i)?620:330);
-    renderIngredients();
-    updateProgress();
-
-    const names=selected.map(i=>ingredients[i].n);
-    $("#log").innerHTML = names.length
-      ? `<b>Prep tray:</b> ${names.join(" + ")}.`
-      : `<b>Prep tray:</b> Empty.`;
-  }
-
-  function updateProgress(){
-    const lit = burners.filter(Boolean).length;
-    let p = selected.length/3*55 + (lit?15:0) + (cooking?30:0);
-    $("#orderProgress").style.width=Math.min(100,p)+"%";
-  }
-
-  function setTemp(v){
-    temp=Math.max(120,Math.min(500,v));
-    $("#temp").textContent=temp;
-    $("#heatGlow").style.opacity=(.18 + temp/720).toFixed(2);
-  }
-
-  $$(".burner").forEach(b=>b.onclick=()=>{
-    if(cooking) return toast("Do not change burners mid-cook.");
-    if(deliveredRecipe) return toast("The dish has already been delivered.");
-
-    const i=+b.dataset.burner;
-    burners = burners.map((_,j)=>j===i ? !burners[j] : false);
-    $$(".burner").forEach((btn,j)=>btn.classList.toggle("on",burners[j]));
-
-    beep(burners[i]?210:120);
-    updateProgress();
-    $("#log").innerHTML = burners[i]
-      ? `<b>Stovetop:</b> Burner ${i+1} is active.`
-      : `<b>Stovetop:</b> All burners are off.`;
+function renderStats(){
+  coins.textContent=state.coins;
+  meals.textContent=state.meals;
+  stars.textContent=state.stars;
+  level.textContent=1+Math.floor(state.stars/12);
+}
+function renderSelected(){
+  const box=document.getElementById("selectedSlots"); box.innerHTML="";
+  state.selected.forEach(k=>{
+    const s=document.createElement("span"); s.className="slot"; s.textContent=`${ING[k].emoji} ${ING[k].name}`; box.appendChild(s);
   });
+  document.getElementById("pot").textContent=state.selected.length? "🥘":"🍳";
+}
+function addIngredient(k){
+  if(state.selected.length>=6){toast("Maximum 6 ingredients.");return}
+  if((state.inventory[k]||0)<=0){toast("Out of that ingredient.");return}
+  state.selected.push(k); renderSelected(); suggestHint(); toast(`${ING[k].name} added`);
+}
+function renderPantry(filter=""){
+  pantryGrid.innerHTML="";
+  Object.entries(ING).filter(([k,v])=>v.name.toLowerCase().includes(filter.toLowerCase())).forEach(([k,v])=>{
+    const d=document.createElement("button");
+    d.className="card"; d.style.color="inherit"; d.style.textAlign="left";
+    d.innerHTML=`<div class="emoji">${v.emoji}</div><h3>${v.name}</h3><p>${v.cat}</p><span class="badge">Qty ${state.inventory[k]}</span>`;
+    d.onclick=()=>addIngredient(k); pantryGrid.appendChild(d);
+  });
+}
+pantrySearch.oninput=e=>renderPantry(e.target.value);
 
-  $("#heatUp").onclick=()=>{
-    if(cooking) return toast("Heat is locked while cooking.");
-    setTemp(temp+20); beep(520);
-  };
-  $("#heatDown").onclick=()=>{
-    if(cooking) return toast("Heat is locked while cooking.");
-    setTemp(temp-20); beep(300);
-  };
+function renderShop(){
+  shopGrid.innerHTML="";
+  Object.entries(ING).forEach(([k,v])=>{
+    const d=document.createElement("div"); d.className="card";
+    d.innerHTML=`<div class="emoji">${v.emoji}</div><h3>${v.name}</h3><p>Restock +3</p><button class="smallbtn">Buy · ${v.cost} coins</button>`;
+    d.querySelector("button").onclick=()=>{
+      if(state.coins<v.cost){toast("Not enough coins.");return}
+      state.coins-=v.cost; state.inventory[k]+=3; save();renderStats();renderShop();toast("Restocked!");
+    };
+    shopGrid.appendChild(d);
+  });
+}
+function renderRecipes(filter=""){
+  recipeList.innerHTML="";
+  RECIPES.filter(r=>r.name.toLowerCase().includes(filter.toLowerCase())).forEach(r=>{
+    const div=document.createElement("div"); div.className="recipe";
+    div.innerHTML=`<h3>${r.emoji} ${r.name}</h3><p>${r.desc}</p>
+      <p><b>Method:</b> ${r.method} · <b>Ingredients:</b> ${r.ings.map(k=>ING[k].name).join(", ")}</p>
+      <details><summary>Steps & optional additions</summary><ol>${r.steps.map(s=>`<li>${s}</li>`).join("")}</ol>
+      <p><b>Optional:</b> ${r.optional.length?r.optional.map(k=>ING[k].name).join(", "):"None"}</p></details>
+      <button class="smallbtn">Load recipe ingredients</button>`;
+    div.querySelector("button").onclick=()=>{
+      state.selected = r.ings.filter(k=>(state.inventory[k]||0)>0).slice(0,6);
+      state.method=r.method; syncMethods();renderSelected();showTab("cook");suggestHint();
+      toast("Recipe loaded");
+    };
+    recipeList.appendChild(div);
+  });
+}
+recipeSearch.oninput=e=>renderRecipes(e.target.value);
 
-  function beginCook(){
-    if(selected.length!==3) return toast("Pick the three ingredients first.");
-    const active = burners.findIndex(Boolean);
-    if(active<0) return toast("Choose the burner for this food.");
+document.querySelectorAll(".method").forEach(b=>b.onclick=()=>{
+  state.method=b.dataset.method; syncMethods();suggestHint();
+});
+function syncMethods(){
+  document.querySelectorAll(".method").forEach(b=>b.classList.toggle("primary",b.dataset.method===state.method));
+  methodTitle.textContent = ({
+    saute:"Stovetop / Sauté",boil:"Boiling Pot",bake:"Oven",grill:"Griddle / Grill",mix:"Mixing Bowl",blend:"Blender"
+  })[state.method];
+}
 
-    cooking=true;
-    cookPos=4;
-    direction=1;
-    $("#cookBtn").textContent="TAP OVEN CENTER TO FINISH";
-    $("#cookState").textContent="COOKING";
-    $("#log").innerHTML="<b>Oracle:</b> Watch the doneness line. Tap the glowing oven center when the food reaches the green zone.";
-    updateProgress();
-    beep(740,.12);
-
-    clearInterval(cookTimer);
-    const speed=Math.max(42,115-Math.floor(temp/18));
-    cookTimer=setInterval(()=>{
-      cookPos += direction*(0.72 + temp/620);
-      if(cookPos>96){ cookPos=96; direction=-1; }
-      if(cookPos<2){ cookPos=2; direction=1; }
-
-      $("#needle").style.left=cookPos+"%";
-      $("#cookState").textContent =
-        cookPos<35 ? "RAW" :
-        cookPos<65 ? "READY" :
-        cookPos<80 ? "BROWNING" :
-        "OVERCOOKING";
-    },speed);
-  }
-
-  function finishCook(){
-    clearInterval(cookTimer);
-    cooking=false;
-
-    const r=currentRecipe();
-    const chosen=selected.map(i=>ingredients[i].t);
-    const ingredientMatches = r.need.filter(n=>chosen.includes(n)).length;
-    const ingredientPerfect = ingredientMatches===3;
-    const activeBurner=burners.findIndex(Boolean);
-    const experimental = !ingredientPerfect;
-    let generated = null;
-    if(experimental){
-      generated=proceduralDish(chosen,activeBurner,cookPos);
-      discoveries.push(generated);
-      if(discoveries.length>30) discoveries.shift();
-    }
-    const burnerPerfect=activeBurner===r.burner;
-    const heatPerfect=temp>=r.heat[0] && temp<=r.heat[1];
-    const timingPerfect=cookPos>=38 && cookPos<=64;
-
+function exactOrNearRecipe(){
+  const selected=[...new Set(state.selected)];
+  let best=null,bestScore=-999;
+  for(const r of RECIPES){
     let score=0;
-    score += ingredientMatches*2;
-    score += burnerPerfect ? 2 : 0;
-    score += heatPerfect ? 2 : 0;
-    score += timingPerfect ? 3 : (cookPos>=30 && cookPos<=76 ? 1 : 0);
-
-    let gain=0, verdict="";
-    if(experimental){
-      gain=Math.max(1,Math.round(generated.quality/20));
-      verdict=generated.quality>78?"ACCIDENTAL MASTERPIECE":generated.quality>55?"STRANGE BUT EDIBLE":generated.oddity>70?"PSYCHIC ANOMALY":"UNKNOWN DISH";
-    } else if(score>=13){
-      gain=10; verdict="DIVINE";
-    } else if(score>=10){
-      gain=6; verdict="DELICIOUS";
-    } else if(score>=7){
-      gain=3; verdict="EDIBLE";
-    } else {
-      gain=0; verdict="FAILED OFFERING";
-    }
-
-    alterPsyche(score, ingredientPerfect, timingPerfect);
-    if(score>=10 && unlocked < cast.length && (favor+gain)>=unlocked*8) setTimeout(unlockCharacter,450);
-    favor += gain;
-    $("#favor").textContent=favor;
-
-    deliveredRecipe=r;
-    selected=[];
-    burners=[false,false,false,false];
-    if(experimental) renderDiscoveries();
-    $$(".burner").forEach(b=>b.classList.remove("on"));
-
-    $("#cookBtn").textContent="NEXT ORDER";
-    $("#cookState").textContent=verdict;
-    $("#needle").style.left=cookPos+"%";
-
-    $("#log").innerHTML = experimental
-      ? `<b>${verdict}.</b> ${generated.icon} <b>${generated.name}</b> emerged from the oven instead of ${r.name}. ${generated.text} Favor +${gain}.`
-      : `<b>${verdict}.</b> ${r.icon} ${r.name} was delivered. Favor +${gain}. The plate dissolves into its ingredients. Somewhere behind you, another cook writes down what you chose.`;
-
-    renderIngredients(true);
-
-    const correctNames=r.need.map(t=>ingredients.find(x=>x.t===t).n);
-    $("#orderDesc").textContent = experimental
-      ? `Experiment recorded: ${generated.name}. You used ${generated.chosen.map(t=>ingredients.find(i=>i.t===t).n).join(" + ")}. The intended ${r.name} recipe was ${correctNames.join(" + ")}.`
-      : `${r.tip} Correct ingredients: ${correctNames.join(" + ")}.`;
-
-    toast(experimental ? `${generated.icon} ${generated.name}` : `${verdict} — recipe revealed`);
-    beep(score>=10?880:180,.18);
+    r.ings.forEach(k=>score+=selected.includes(k)?3:-2);
+    selected.forEach(k=>{ if(!r.ings.includes(k)) score += r.optional.includes(k)?1:-1; });
+    if(r.method===state.method) score+=4; else score-=2;
+    if(score>bestScore){bestScore=score;best=r;}
   }
-
-  $("#cookBtn").onclick=()=>{
-    if(deliveredRecipe) return nextRecipe();
-    if(cooking) return finishCook();
-    beginCook();
-  };
-
-  // Make the oven center itself the finish button.
-  $(".oven-wrap").onclick=(e)=>{
-    if(!cooking) return;
-    finishCook();
-  };
-  $(".oven-wrap").style.cursor="pointer";
-
-  function nextRecipe(){
-    deliveredRecipe=null;
-    recipeIndex=(recipeIndex+1)%recipes.length;
-    if(recipeIndex===0) shift++;
-
-    selected=[];
-    burners=[false,false,false,false];
-    cooking=false;
-    cookPos=4;
-    direction=1;
-
-    $("#shift").textContent=shift;
-    $("#needle").style.left="4%";
-    $("#cookState").textContent="WAITING";
-    $("#cookBtn").textContent="START COOKING";
-
-    const r=currentRecipe();
-    $("#orderName").textContent=`${r.icon} ${r.name}`;
-    $("#orderDesc").textContent =
-      `${r.subtitle} Figure out the three ingredients from the tray, choose the right burner, then cook it.`;
-    $("#orderProgress").style.width="0%";
-
-    renderIngredients();
-    $("#log").innerHTML="<b>Oracle:</b> New order. The recipe is hidden until you deliver it.";
+  return {recipe:best,score:bestScore};
+}
+function experimentScore(){
+  const cats=state.selected.map(k=>ING[k].cat);
+  let s=45;
+  if(cats.includes("seasoning"))s+=8;
+  if(cats.includes("fat"))s+=8;
+  if(cats.includes("aromatic"))s+=8;
+  if(cats.includes("acid"))s+=5;
+  if(cats.includes("protein"))s+=8;
+  if(cats.includes("vegetable")||cats.includes("fruit"))s+=5;
+  if(state.selected.length>=3 && state.selected.length<=5)s+=8;
+  if(state.selected.length===6)s-=5;
+  if(cats.includes("sweet") && cats.includes("aromatic") && state.method!=="bake")s-=12;
+  return Math.max(20,Math.min(92,s));
+}
+function consume(){
+  for(const k of state.selected) state.inventory[k]=Math.max(0,state.inventory[k]-1);
+}
+function cook(){
+  if(state.selected.length<2){toast("Pick at least 2 ingredients.");return}
+  const {recipe,score}=exactOrNearRecipe();
+  const unique=[...new Set(state.selected)];
+  const requiredHit=recipe.ings.filter(k=>unique.includes(k)).length;
+  const strongMatch = recipe.method===state.method && requiredHit>=Math.max(2,recipe.ings.length-1);
+  consume();
+  state.meals++;
+  let quality, reward, title, msg;
+  if(strongMatch){
+    quality=Math.min(100,70 + requiredHit*5 + recipe.optional.filter(k=>unique.includes(k)).length*3);
+    reward=8+Math.floor(quality/12);
+    title=`${recipe.emoji} ${recipe.name}`;
+    msg=`You made a recognizable ${recipe.name}. Recipe match ${quality}%.`;
+  }else{
+    quality=experimentScore();
+    reward=3+Math.floor(quality/18);
+    const main = unique.slice(0,2).map(k=>ING[k].name).join(" & ");
+    title=`🧪 ${main} Experiment`;
+    msg=`Original kitchen experiment. Flavor-balance score: ${quality}%.`;
   }
+  state.coins+=reward;
+  const stars=Math.max(1,Math.floor(quality/25));
+  state.stars+=stars;
+  resultBox.innerHTML=`<h3>${title}</h3><p>${msg}</p><p class="ok"><b>+${reward} coins · +${stars} stars</b></p>
+  <div class="progress"><div style="width:${quality}%"></div></div>
+  <p class="tip">Game score only—taste depends on preparation, seasoning and actual technique.</p>`;
+  state.selected=[]; save();renderStats();renderSelected();suggestHint();toast("Dish complete!");
+}
+cookBtn.onclick=cook;
+clearBtn.onclick=()=>{state.selected=[];renderSelected();suggestHint();};
 
-  const intro = [
-    ["KITCHEN OF THE GODS","The gods ask for ordinary food. The machine beneath the oven asks stranger questions."],
-    ["EVERY DISH HAS A REAL IDEA","Grilled cheese wants bread, cheese, and butter. Pancakes want flour, eggs, and milk. The game hides the answer until you cook."],
-    ["THE STOVETOP IS THE TEST","Choose exactly three ingredients. Then choose the burner you think fits the dish."],
-    ["THE OVEN CENTER IS THE MOMENT","Start cooking, watch the doneness line, then tap the center of the oven when the food reaches the green zone."],
-    ["THE DISH BECOMES ITS INGREDIENTS","After delivery, the finished food breaks back apart and highlights the ingredients you actually needed. Learn it, then move on."]
-  ];
-
-  $("#introBtn").onclick=()=>{
-    introStep++;
-    beep(560);
-
-    if(introStep>=intro.length){
-      $("#intro").classList.add("hidden");
-      return;
-    }
-
-    $("#introTitle").innerHTML=intro[introStep][0].replaceAll(" ","<br>");
-    $("#introText").textContent=intro[introStep][1];
-    $("#introBtn").textContent =
-      introStep===intro.length-1 ? "ENTER THE DIVINE KITCHEN ✦" : "CONTINUE ✦";
-  };
-
-  function modal(html){
-    $("#modalBody").innerHTML=html;
-    $("#modal").classList.remove("hidden");
+function suggestHint(){
+  if(!state.selected.length){hintText.textContent="Try eggs + butter + salt with Sauté.";return}
+  const {recipe}=exactOrNearRecipe();
+  const missing=recipe.ings.filter(k=>!state.selected.includes(k));
+  if(recipe.method!==state.method){
+    hintText.textContent=`Closest idea: ${recipe.name}. Try the ${recipe.method} method.`;
+  }else if(missing.length){
+    hintText.textContent=`You are near ${recipe.name}. Consider adding ${missing.slice(0,2).map(k=>ING[k].name).join(" + ")}.`;
+  }else{
+    hintText.textContent=`Looks like ${recipe.name}. Cook it!`;
   }
+}
 
-  $("#closeModal").onclick=()=>$("#modal").classList.add("hidden");
-
-  $("#ordersBtn").onclick=()=>modal(`
-    <h2>Recipe Book</h2>
-    <p>${recipes.map((r,i)=>
-      `${i+1}. <b>${r.icon} ${r.name}</b><br>${r.tip}`
-    ).join("<br><br>")}</p>
-  `);
-
-  $("#loreBtn").onclick=()=>modal(`
-    <h2>How the Eternal Range Works</h2>
-    <p>The food is fictionalized, but the ingredient combinations are based on familiar real-world cooking ideas.</p>
-    <p><b>Round:</b> identify three ingredients → choose a burner → set heat → start cooking → tap the oven center in the ready zone → deliver → reveal the correct ingredients.</p>
-    <p>The game rewards ingredient knowledge, heat choice, burner choice, and timing.</p>
-  `);
-
-  $("#resetBtn").onclick=()=>{
-    favor=0; shift=1; recipeIndex=-1; deliveredRecipe=null;
-    $("#favor").textContent=0;
-    nextRecipe();
-    toast("A new cook has entered the afterlife.");
-  };
-
-  
-  $$("#areaNav button").forEach(btn=>btn.onclick=()=>{
-    const area=btn.dataset.area;
-    $$("#areaNav button").forEach(b=>b.classList.toggle("active",b===btn));
-    $$(".area-screen").forEach(s=>s.classList.toggle("active",s.id===`area-${area}`));
-    if(area==="astral") renderAstral();
-    if(area==="psyche") renderDeepPsych();
-    if(area==="vault"||area==="below") renderVault();
-    if(area==="experiment"){renderFormulaExplain();renderDiscoveries();}
-  });
-  $("#belowBtn").onclick=()=>{
-    if(unlocked<cast.length){
-      const remaining=cast.length-unlocked;
-      toast(`${remaining} recovered ${remaining===1?"personality":"personalities"} still required.`);
-      $("#belowText").textContent="Something answers with three knocks. The hatch remains sealed. Perfect and delicious dishes recover the missing profiles.";
-      return;
-    }
-    $("#belowLock").textContent="◉";
-    $("#belowTitle").textContent="THE COOK";
-    $("#belowText").textContent="The hatch opens onto another kitchen. The same oven waits below. On its screen is your accumulated fictional profile, followed by one sentence: YOU WERE NEVER BEING MEASURED. YOU WERE BEING ASSEMBLED.";
-    psyche.shadow=100; renderPsyche(); beep(95,.5);
-  };
-
-  // Initial presentation
-  const r=currentRecipe();
-  $("#orderName").textContent=`${r.icon} ${r.name}`;
-  $("#orderDesc").textContent =
-    `${r.subtitle} Figure out the three ingredients from the tray, choose the right burner, then cook it.`;
-  $("#cookBtn").textContent="START COOKING";
-  renderIngredients();
-  renderPsyche();
-  renderCharacters();
-  renderAreas();
-  $("#memoryClose").onclick=()=>$("#memoryFlash").classList.remove("show");
-  setTemp(temp);
-  updateProgress();
-})();
+renderStats();renderSelected();renderPantry();renderRecipes();renderShop();syncMethods();suggestHint();
 </script>
-
 </body>
 </html>
